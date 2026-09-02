@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+<style>
+body{margin:0;background:#eceeed;font-family:Manrope,system-ui,sans-serif}
+a{color:#0E8A6A;text-decoration:none}a:hover{color:#096b52}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:800 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#101413;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:800 13px/1.2 Manrope,sans-serif;color:#101413}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:800 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#101413;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:600 11.5px/1.3 Manrope,sans-serif;color:rgba(0,0,0,.55)}
+.dv-note{max-width:402px;margin:2px 0 0;font:500 11px/1.5 Manrope,sans-serif;color:rgba(0,0,0,.45)}
+.dv-opt:target .dv-oid{background:#0E8A6A;color:#fff}
+.dv-next{margin:22px 0 0;font:600 12px/1.5 Manrope,sans-serif;color:rgba(0,0,0,.5)}
+ion-icon{display:block}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Trang chủ — ba hướng thiết kế · built on the existing Haven codebase</span></div>
+
+<div style="display:flex;flex-wrap:wrap;gap:16px;margin:0 0 26px;align-items:stretch">
+  <div style="width:430px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:18px 20px">
+    <div style="font:800 12px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#98A19E">Assumptions</div>
+    <ul style="margin:10px 0 0;padding-left:16px;font:500 12.5px/1.7 Manrope,sans-serif;color:#3d4442">
+      <li>Nothing is invented: every route, label and photo below already exists in <code style="font:600 11.5px ui-monospace,monospace">src/app</code>, <code style="font:600 11.5px ui-monospace,monospace">src/i18n/vi.ts</code> and <code style="font:600 11.5px ui-monospace,monospace">src/mocks</code>.</li>
+      <li>Four customer tabs stay: Trang chủ · Dịch vụ · Hoạt động · Tài khoản. 430pt column, phone only.</li>
+      <li>Still no prices anywhere; nutrition numbers stay loud. Roles stay explicit (điều dưỡng ≠ bác sĩ).</li>
+      <li><code style="font:600 11.5px ui-monospace,monospace">AGENTS.md</code> says "one accent, no gradients" — <code style="font:600 11.5px ui-monospace,monospace">colors.ts</code> already moved past that. I follow the code, not the doc.</li>
+    </ul>
+  </div>
+  <div style="width:430px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:18px 20px">
+    <div style="font:800 12px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#98A19E">System</div>
+    <div style="display:flex;gap:6px;margin:12px 0 4px">
+      <div style="flex:1;height:44px;border-radius:8px;background:#0E8A6A"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#1976D2"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#F79009"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#06AED4"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#7A5AF8"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#EE46BC"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#F04438"></div>
+      <div style="flex:1;height:44px;border-radius:8px;background:#F4F6F5;border:1px solid #E7EAE9"></div>
+    </div>
+    <div style="font:500 10.5px/1.5 Manrope,sans-serif;color:#98A19E">green primary · blue info · 6 category tints, from <code style="font:600 10.5px ui-monospace,monospace">colors.ts</code> — unchanged hexes, used with more confidence</div>
+    <div style="margin-top:14px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+      <span style="font:800 28px Manrope,sans-serif;letter-spacing:-.03em">Chào Minh Anh</span>
+      <span style="font:700 15px Manrope,sans-serif">Sắp tới</span>
+      <span style="font:500 12.5px Manrope,sans-serif;color:#6B7370">Thứ 6 · 2 nhát xịt</span>
+    </div>
+    <div style="font:500 10.5px/1.5 Manrope,sans-serif;color:#98A19E;margin-top:6px">Manrope 800/700/500 — pageTitle 28–30 (was 34, too big once headers carry colour), section 19, body 14.5, meta 11.5. Diacritics checked at 375pt.</div>
+  </div>
+</div>
+
+<div class="dv-opts">
+
+  <div class="dv-opt" id="1a">
+    <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Uber spine — hierarchy by scale, colour only in the icons</div>
+    <div style="border-radius:44px;overflow:hidden;background:#000">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+      <div style="background:#fff;min-height:874px;display:flex;flex-direction:column;font-family:Manrope,system-ui,sans-serif;color:#101413">
+        <div style="display:flex;align-items:center;gap:12px;padding:58px 16px 0">
+          <div style="flex:1;min-width:0">
+            <div style="font:800 10.5px Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#98A19E">Chăm sóc tại</div>
+            <div style="display:flex;align-items:center;gap:5px;margin-top:3px">
+              <ion-icon name="location" style="font-size:15px;color:#0E8A6A"></ion-icon>
+              <span style="font:800 14px Manrope,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">128/4 Nguyễn Đình Chiểu, Q.3</span>
+              <ion-icon name="chevron-down" style="font-size:13px;color:#98A19E"></ion-icon>
+            </div>
+          </div>
+          <div style="position:relative;width:40px;height:40px;border-radius:20px;background:#F4F6F5;display:flex;align-items:center;justify-content:center">
+            <ion-icon name="chatbubble-ellipses" style="font-size:19px;color:#1976D2"></ion-icon>
+            <div style="position:absolute;top:7px;right:7px;width:10px;height:10px;border-radius:5px;background:#1976D2;border:2px solid #fff"></div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Minh Anh" style="width:40px;height:40px;border-radius:20px;object-fit:cover">
+        </div>
+
+        <div style="padding:16px 16px 0">
+          <div style="font:800 29px/1.15 Manrope,sans-serif;letter-spacing:-.03em">Chào Minh Anh</div>
+          <div style="font:500 13px Manrope,sans-serif;color:#6B7370;margin-top:3px">Chủ nhật, 23 tháng 8 · 2 việc cần làm hôm nay</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin:16px 16px 0;height:52px;padding:0 18px;border:1px solid #E7EAE9;border-radius:26px;box-shadow:0 2px 12px rgba(16,20,19,.05)">
+          <ion-icon name="search" style="font-size:19px;color:#101413"></ion-icon>
+          <span style="font:500 15px Manrope,sans-serif;color:#6B7370">Bạn cần hỗ trợ gì hôm nay?</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 16px 0">
+          <div style="border:1px solid #E7EAE9;border-radius:16px;padding:13px">
+            <div style="width:40px;height:40px;border-radius:12px;background:#E6F0FB;display:flex;align-items:center;justify-content:center"><ion-icon name="medkit" style="font-size:21px;color:#1976D2"></ion-icon></div>
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:11px">Bác sĩ tại nhà</div>
+            <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#98A19E;margin-top:2px">Đến trong khoảng 20 phút</div>
+          </div>
+          <div style="border:1px solid #E7EAE9;border-radius:16px;padding:13px">
+            <div style="width:40px;height:40px;border-radius:12px;background:#E4F3EE;display:flex;align-items:center;justify-content:center"><ion-icon name="fitness" style="font-size:21px;color:#0E8A6A"></ion-icon></div>
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:11px">Điều dưỡng</div>
+            <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#98A19E;margin-top:2px">Thay băng, tiêm, sinh hiệu</div>
+          </div>
+          <div style="border:1px solid #E7EAE9;border-radius:16px;padding:13px">
+            <div style="width:40px;height:40px;border-radius:12px;background:#EFEBFE;display:flex;align-items:center;justify-content:center"><ion-icon name="body" style="font-size:21px;color:#7A5AF8"></ion-icon></div>
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:11px">Vật lý trị liệu</div>
+            <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#98A19E;margin-top:2px">Giảm đau, phục hồi vận động</div>
+          </div>
+          <div style="border:1px solid #E7EAE9;border-radius:16px;padding:13px">
+            <div style="width:40px;height:40px;border-radius:12px;background:#FEE9E7;display:flex;align-items:center;justify-content:center"><ion-icon name="heart" style="font-size:21px;color:#F04438"></ion-icon></div>
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:11px">Người cao tuổi</div>
+            <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#98A19E;margin-top:2px">Hỗ trợ sinh hoạt hằng ngày</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 16px 0;height:46px;border-radius:14px;background:#F4F6F5">
+          <span style="font:700 13.5px Manrope,sans-serif;color:#0E8A6A">Xem tất cả 9 dịch vụ chăm sóc</span>
+          <ion-icon name="arrow-forward" style="font-size:15px;color:#0E8A6A"></ion-icon>
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin:26px 16px 0">
+          <span style="font:800 19px Manrope,sans-serif;letter-spacing:-.02em">Hôm nay</span>
+          <span style="font:700 13px Manrope,sans-serif;color:#0E8A6A">Xem tất cả</span>
+        </div>
+
+        <div style="margin:12px 16px 0">
+          <div style="display:grid;grid-template-columns:40px 16px 1fr;align-items:start">
+            <div style="font:700 12.5px Manrope,sans-serif;color:#98A19E;padding-top:13px;font-variant-numeric:tabular-nums">08:00</div>
+            <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch;padding-top:15px"><div style="width:10px;height:10px;border-radius:5px;background:#0E8A6A"></div><div style="flex:1;width:2px;background:#E7EAE9"></div></div>
+            <div style="padding:9px 0 16px;display:flex;align-items:center;gap:8px">
+              <div style="flex:1;min-width:0">
+                <div style="font:700 14.5px Manrope,sans-serif;color:#98A19E;text-decoration:line-through">Salbutamol dạng hít</div>
+                <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:2px">2 nhát xịt · đã uống</div>
+              </div>
+              <ion-icon name="checkmark-circle" style="font-size:22px;color:#0E8A6A"></ion-icon>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 16px 1fr;align-items:start">
+            <div style="font:700 12.5px Manrope,sans-serif;color:#6B7370;padding-top:13px;font-variant-numeric:tabular-nums">12:30</div>
+            <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch"><div style="width:2px;height:15px;background:#E7EAE9"></div><div style="width:10px;height:10px;border-radius:5px;background:#F79009"></div><div style="flex:1;width:2px;background:#E7EAE9"></div></div>
+            <div style="padding:9px 0 16px;display:flex;align-items:center;gap:10px">
+              <img src="https://images.unsplash.com/photo-1641440615059-42c8ed3af8c8?w=200&h=200&q=75&auto=format&fit=crop" alt="Cơm Nhà An" style="width:44px;height:44px;border-radius:12px;object-fit:cover">
+              <div style="flex:1;min-width:0">
+                <div style="font:700 14.5px Manrope,sans-serif">Ghi lại bữa trưa</div>
+                <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:2px">Cơm Nhà An · 3 món gợi ý cho bạn</div>
+              </div>
+              <ion-icon name="chevron-forward" style="font-size:17px;color:#98A19E"></ion-icon>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 16px 1fr;align-items:start">
+            <div style="font:700 12.5px Manrope,sans-serif;color:#6B7370;padding-top:13px;font-variant-numeric:tabular-nums">18:00</div>
+            <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch"><div style="width:2px;height:15px;background:#E7EAE9"></div><div style="width:10px;height:10px;border-radius:5px;background:#EE46BC"></div><div style="flex:1;width:2px;background:#E7EAE9"></div></div>
+            <div style="padding:9px 0 16px;display:flex;align-items:center;gap:10px">
+              <img src="https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Hoàng Nam" style="width:44px;height:44px;border-radius:12px;object-fit:cover">
+              <div style="flex:1;min-width:0">
+                <div style="font:700 14.5px Manrope,sans-serif">Cetirizine cho Hoàng Nam</div>
+                <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:2px">2,5 ml · siro trẻ em</div>
+              </div>
+              <ion-icon name="chevron-forward" style="font-size:17px;color:#98A19E"></ion-icon>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 16px 1fr;align-items:start">
+            <div style="font:700 12.5px Manrope,sans-serif;color:#6B7370;padding-top:13px;font-variant-numeric:tabular-nums">20:00</div>
+            <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch"><div style="width:2px;height:15px;background:#E7EAE9"></div><div style="width:10px;height:10px;border-radius:5px;background:#fff;border:2px solid #EE46BC"></div></div>
+            <div style="padding:9px 0 0;display:flex;align-items:center;gap:10px">
+              <div style="flex:1;min-width:0">
+                <div style="font:700 14.5px Manrope,sans-serif">Salbutamol dạng hít</div>
+                <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:2px">2 nhát xịt · kê bởi BS. Nguyễn Thu Hà</div>
+              </div>
+              <div style="height:34px;padding:0 14px;border-radius:17px;background:#101413;display:flex;align-items:center"><span style="font:700 12.5px Manrope,sans-serif;color:#fff">Đã uống</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin:26px 16px 0">
+          <span style="font:800 19px Manrope,sans-serif;letter-spacing:-.02em">Quán ăn dành cho bạn</span>
+          <span style="font:700 13px Manrope,sans-serif;color:#0E8A6A">Xem tất cả</span>
+        </div>
+        <div style="display:flex;gap:12px;padding:12px 16px 0;overflow:hidden">
+          <div style="width:206px;flex:none">
+            <img src="https://images.unsplash.com/photo-1597345637412-9fd611e758f3?w=600&h=380&q=75&auto=format&fit=crop" alt="Phở Sáng" style="width:206px;height:118px;border-radius:16px;object-fit:cover">
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:8px">Phở Sáng</div>
+            <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Phở, bún, hủ tiếu nấu thanh</div>
+            <div style="display:flex;align-items:center;gap:4px;margin-top:4px">
+              <ion-icon name="star" style="font-size:12px;color:#E9A100"></ion-icon>
+              <span style="font:600 11.5px Manrope,sans-serif;color:#6B7370">4,8 · 20–30 phút</span>
+            </div>
+          </div>
+          <div style="width:206px;flex:none">
+            <img src="https://images.unsplash.com/photo-1631709497146-a239ef373cf1?w=600&h=380&q=75&auto=format&fit=crop" alt="Bếp Xanh" style="width:206px;height:118px;border-radius:16px;object-fit:cover">
+            <div style="font:700 14.5px Manrope,sans-serif;margin-top:8px">Bếp Xanh</div>
+            <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Món chay và rau củ theo mùa</div>
+            <div style="display:flex;align-items:center;gap:4px;margin-top:4px">
+              <ion-icon name="star" style="font-size:12px;color:#E9A100"></ion-icon>
+              <span style="font:600 11.5px Manrope,sans-serif;color:#6B7370">4,7 · 25–35 phút</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:28px"></div>
+        <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;bottom:0;margin-top:auto;padding:10px 14px 24px;background:linear-gradient(to top,#fff 62%,rgba(255,255,255,0))">
+          <div style="display:flex;background:#fff;border:1px solid #E7EAE9;border-radius:24px;box-shadow:0 8px 28px rgba(16,20,19,.12);padding:9px 4px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="home" style="font-size:21px;color:#0E8A6A"></ion-icon><span style="font:700 10.5px Manrope,sans-serif;color:#0E8A6A">Trang chủ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="grid-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Dịch vụ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="receipt-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Hoạt động</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="person-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Tài khoản</span></div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+    </x-import>
+    </div>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+    <p class="dv-note">The "Hôm nay" spine becomes a real timeline with times, a rail and one live action — today it is four identical grey rows. Services promoted from 60pt circles to tappable cards that say what each profession does. Colour stays in the icon squares.</p>
+    </sc-if>
+  </div>
+
+  <div class="dv-opt" id="1b">
+    <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Grab energy — green brand header, colourful grid, photo-led</div>
+    <div style="border-radius:44px;overflow:hidden;background:#000">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+      <div style="background:#fff;min-height:874px;display:flex;flex-direction:column;font-family:Manrope,system-ui,sans-serif;color:#101413">
+        <div style="background:#0E8A6A;padding:56px 16px 34px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="flex:1;min-width:0">
+              <div style="font:800 10.5px Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.66)">Chăm sóc tại</div>
+              <div style="display:flex;align-items:center;gap:5px;margin-top:3px">
+                <span style="font:800 15px Manrope,sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">128/4 Nguyễn Đình Chiểu, Q.3</span>
+                <ion-icon name="chevron-down" style="font-size:14px;color:rgba(255,255,255,.8)"></ion-icon>
+              </div>
+            </div>
+            <div style="position:relative;width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center">
+              <ion-icon name="chatbubble-ellipses" style="font-size:18px;color:#fff"></ion-icon>
+              <div style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:5px;background:#F79009;border:2px solid #0E8A6A"></div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Minh Anh" style="width:38px;height:38px;border-radius:19px;object-fit:cover;border:2px solid rgba(255,255,255,.5)">
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:18px;height:50px;padding:0 18px;background:#fff;border-radius:25px">
+            <ion-icon name="search" style="font-size:19px;color:#0E8A6A"></ion-icon>
+            <span style="font:500 15px Manrope,sans-serif;color:#6B7370">Bạn cần hỗ trợ gì hôm nay?</span>
+          </div>
+        </div>
+
+        <div style="margin:-24px 12px 0;background:#fff;border:1px solid #EFF2F1;border-radius:22px;box-shadow:0 8px 30px rgba(16,20,19,.09);padding:16px 8px 14px">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px 4px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#E6F0FB;display:flex;align-items:center;justify-content:center"><ion-icon name="medkit" style="font-size:23px;color:#1976D2"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Bác sĩ<br>tại nhà</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#E4F3EE;display:flex;align-items:center;justify-content:center"><ion-icon name="fitness" style="font-size:23px;color:#0E8A6A"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Điều dưỡng</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#EFEBFE;display:flex;align-items:center;justify-content:center"><ion-icon name="body" style="font-size:23px;color:#7A5AF8"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Vật lý<br>trị liệu</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#FEE9E7;display:flex;align-items:center;justify-content:center"><ion-icon name="heart" style="font-size:23px;color:#F04438"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Người<br>cao tuổi</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#FEF0DC;display:flex;align-items:center;justify-content:center"><ion-icon name="restaurant" style="font-size:23px;color:#F79009"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Ăn<br>lành mạnh</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#E0F6FB;display:flex;align-items:center;justify-content:center"><ion-icon name="barbell" style="font-size:23px;color:#06AED4"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Vận động</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#FDE9F7;display:flex;align-items:center;justify-content:center"><ion-icon name="alarm" style="font-size:23px;color:#EE46BC"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Thuốc</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:7px"><div style="width:46px;height:46px;border-radius:23px;background:#F4F6F5;display:flex;align-items:center;justify-content:center"><ion-icon name="grid" style="font-size:21px;color:#6B7370"></ion-icon></div><span style="font:700 10.5px/1.25 Manrope,sans-serif;text-align:center;min-height:26px">Tất cả</span></div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showLiveCare }}" hint-placeholder-val="{{ true }}">
+        <div style="margin:14px 12px 0;background:#0B6B53;border-radius:20px;padding:14px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="BS. Nguyễn Thu Hà" style="width:44px;height:44px;border-radius:14px;object-fit:cover">
+            <div style="flex:1;min-width:0">
+              <div style="font:800 10px Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#7FD9BE">Đang trên đường đến</div>
+              <div style="font:800 14.5px Manrope,sans-serif;color:#fff;margin-top:2px">BS. Nguyễn Thu Hà</div>
+              <div style="font:500 11.5px Manrope,sans-serif;color:rgba(255,255,255,.72);margin-top:1px">Bác sĩ đa khoa · còn khoảng 12 phút</div>
+            </div>
+            <div style="width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center"><ion-icon name="call" style="font-size:18px;color:#fff"></ion-icon></div>
+          </div>
+          <div style="display:flex;gap:5px;margin-top:13px">
+            <div style="flex:1;height:4px;border-radius:2px;background:#fff"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:#fff"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.28)"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.28)"></div>
+          </div>
+        </div>
+        </sc-if>
+
+        <div style="margin:22px 12px 0">
+          <div style="font:800 18px Manrope,sans-serif;letter-spacing:-.02em">Bạn đang thèm gì nào?</div>
+          <div style="display:flex;gap:12px;margin-top:12px;overflow:hidden">
+            <div style="width:64px;flex:none;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://images.unsplash.com/photo-1597345637412-9fd611e758f3?w=200&h=200&q=75&auto=format&fit=crop" alt="Phở" style="width:64px;height:64px;border-radius:32px;object-fit:cover"><span style="font:700 11px Manrope,sans-serif">Phở</span></div>
+            <div style="width:64px;flex:none;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://images.unsplash.com/photo-1583316175701-0bc5f25a0a44?w=200&h=200&q=75&auto=format&fit=crop" alt="Bún" style="width:64px;height:64px;border-radius:32px;object-fit:cover"><span style="font:700 11px Manrope,sans-serif">Bún</span></div>
+            <div style="width:64px;flex:none;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://images.unsplash.com/photo-1628997323766-c846909a7049?w=200&h=200&q=75&auto=format&fit=crop" alt="Cơm" style="width:64px;height:64px;border-radius:32px;object-fit:cover"><span style="font:700 11px Manrope,sans-serif">Cơm</span></div>
+            <div style="width:64px;flex:none;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://images.unsplash.com/photo-1594020293008-5f99f60bd4d7?w=200&h=200&q=75&auto=format&fit=crop" alt="Món chay" style="width:64px;height:64px;border-radius:32px;object-fit:cover"><span style="font:700 11px Manrope,sans-serif">Chay</span></div>
+            <div style="width:64px;flex:none;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=200&q=75&auto=format&fit=crop" alt="Bowl" style="width:64px;height:64px;border-radius:32px;object-fit:cover"><span style="font:700 11px Manrope,sans-serif">Bowl</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin:22px 12px 0">
+          <span style="font:800 18px Manrope,sans-serif;letter-spacing:-.02em">Quán ăn gần bạn</span>
+          <span style="font:700 13px Manrope,sans-serif;color:#0E8A6A">Xem tất cả</span>
+        </div>
+        <div style="margin:12px 12px 0">
+          <div style="position:relative">
+            <img src="https://images.unsplash.com/photo-1641440615059-42c8ed3af8c8?w=800&h=450&q=75&auto=format&fit=crop" alt="Cơm Nhà An" style="width:100%;height:168px;border-radius:18px;object-fit:cover;display:block">
+            <div style="position:absolute;left:12px;bottom:12px;display:flex;gap:6px">
+              <div style="height:26px;padding:0 10px;border-radius:13px;background:rgba(255,255,255,.94);display:flex;align-items:center"><span style="font:700 11.5px Manrope,sans-serif">25–40 phút</span></div>
+              <div style="height:26px;padding:0 10px;border-radius:13px;background:#0E8A6A;display:flex;align-items:center"><span style="font:700 11.5px Manrope,sans-serif;color:#fff">Giàu đạm</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-top:9px">
+            <span style="font:800 15.5px Manrope,sans-serif;flex:1">Cơm Nhà An</span>
+            <ion-icon name="star" style="font-size:13px;color:#E9A100"></ion-icon>
+            <span style="font:700 12.5px Manrope,sans-serif">4,9</span>
+          </div>
+          <div style="font:500 12px Manrope,sans-serif;color:#98A19E;margin-top:2px">Cơm gạo lứt và món nhà nấu, ít dầu mỡ · 2,4 km</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;margin:18px 12px 0;padding:13px;border:1px solid #E7EAE9;border-radius:18px">
+          <div style="width:44px;height:44px;border-radius:14px;background:#FDE9F7;display:flex;align-items:center;justify-content:center"><ion-icon name="alarm" style="font-size:22px;color:#EE46BC"></ion-icon></div>
+          <div style="flex:1;min-width:0">
+            <div style="font:700 14.5px Manrope,sans-serif">2/3 liều thuốc hôm nay</div>
+            <div style="font:500 11.5px Manrope,sans-serif;color:#98A19E;margin-top:2px">Lần tới 20:00 · Salbutamol dạng hít</div>
+          </div>
+          <ion-icon name="chevron-forward" style="font-size:17px;color:#98A19E"></ion-icon>
+        </div>
+
+        <div style="height:26px"></div>
+        <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;bottom:0;margin-top:auto;padding:10px 14px 24px;background:linear-gradient(to top,#fff 62%,rgba(255,255,255,0))">
+          <div style="display:flex;background:#fff;border:1px solid #E7EAE9;border-radius:24px;box-shadow:0 8px 28px rgba(16,20,19,.12);padding:9px 4px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="home" style="font-size:21px;color:#0E8A6A"></ion-icon><span style="font:700 10.5px Manrope,sans-serif;color:#0E8A6A">Trang chủ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="grid-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Dịch vụ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="receipt-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Hoạt động</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="person-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Tài khoản</span></div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+    </x-import>
+    </div>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+    <p class="dv-note">Green header carries location + search, the 8-service grid floats over it on a white card — the pattern Vietnamese users already know from super-apps. The live-care strip finally gives <code style="font:600 10.5px ui-monospace,monospace">CareRequestStatus</code> a home on Home.</p>
+    </sc-if>
+  </div>
+
+  <div class="dv-opt" id="1c">
+    <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Status first — one live card, then a pillar-coloured feed</div>
+    <div style="border-radius:44px;overflow:hidden;background:#000">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+      <div style="background:#fff;min-height:874px;display:flex;flex-direction:column;font-family:Manrope,system-ui,sans-serif;color:#101413">
+        <div style="display:flex;align-items:center;gap:10px;padding:58px 16px 0">
+          <div style="width:9px;height:9px;border-radius:5px;background:#0E8A6A"></div>
+          <span style="flex:1;font:800 19px Manrope,sans-serif;letter-spacing:-.05em">haven</span>
+          <div style="width:38px;height:38px;border-radius:19px;background:#F4F6F5;display:flex;align-items:center;justify-content:center"><ion-icon name="notifications-outline" style="font-size:19px;color:#101413"></ion-icon></div>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Minh Anh" style="width:38px;height:38px;border-radius:19px;object-fit:cover">
+        </div>
+
+        <div style="margin:20px 16px 0;background:#0E8A6A;border-radius:26px;padding:20px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="height:24px;padding:0 10px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center"><span style="font:800 10px Manrope,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff">Liều tiếp theo</span></div>
+            <span style="font:800 13px Manrope,sans-serif;color:rgba(255,255,255,.85);font-variant-numeric:tabular-nums">20:00 · còn 2 giờ</span>
+          </div>
+          <div style="font:800 25px/1.2 Manrope,sans-serif;color:#fff;letter-spacing:-.03em;margin-top:12px">Salbutamol dạng hít</div>
+          <div style="font:500 12.5px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.78);margin-top:5px">2 nhát xịt · kê bởi BS. Nguyễn Thu Hà · lắc kỹ trước khi dùng</div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;height:44px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center"><span style="font:800 14px Manrope,sans-serif;color:#0E8A6A">Đã uống</span></div>
+            <div style="height:44px;padding:0 16px;border-radius:14px;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center"><span style="font:700 14px Manrope,sans-serif;color:#fff">Nhắc lại</span></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:7px;margin:18px 16px 0;overflow:hidden">
+          <div style="flex:none;height:36px;padding:0 13px;border-radius:18px;background:#E4F3EE;display:flex;align-items:center;gap:6px"><ion-icon name="medkit" style="font-size:15px;color:#0E8A6A"></ion-icon><span style="font:700 12.5px Manrope,sans-serif;color:#0E8A6A">Chăm sóc</span></div>
+          <div style="flex:none;height:36px;padding:0 13px;border-radius:18px;background:#FEF0DC;display:flex;align-items:center;gap:6px"><ion-icon name="nutrition" style="font-size:15px;color:#B96A00"></ion-icon><span style="font:700 12.5px Manrope,sans-serif;color:#B96A00">Dinh dưỡng</span></div>
+          <div style="flex:none;height:36px;padding:0 13px;border-radius:18px;background:#E0F6FB;display:flex;align-items:center;gap:6px"><ion-icon name="barbell" style="font-size:15px;color:#0587A5"></ion-icon><span style="font:700 12.5px Manrope,sans-serif;color:#0587A5">Vận động</span></div>
+          <div style="flex:none;height:36px;padding:0 13px;border-radius:18px;background:#EFEBFE;display:flex;align-items:center;gap:6px"><ion-icon name="people" style="font-size:15px;color:#5B3FD1"></ion-icon><span style="font:700 12.5px Manrope,sans-serif;color:#5B3FD1">Gia đình</span></div>
+        </div>
+
+        <div style="margin:24px 16px 0">
+          <div style="font:800 10px Manrope,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#0E8A6A">Chăm sóc tại nhà</div>
+          <div style="font:800 21px/1.25 Manrope,sans-serif;letter-spacing:-.03em;margin-top:6px;text-wrap:pretty">3 chuyên gia đang sẵn sàng quanh Quận 3</div>
+          <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&h=460&q=75&auto=format&fit=crop" alt="Khám tại nhà" style="width:100%;height:158px;border-radius:20px;object-fit:cover;display:block;margin-top:12px">
+          <div style="display:flex;align-items:center;gap:10px;margin-top:12px">
+            <div style="display:flex">
+              <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=120&h=120&q=75&auto=format&fit=crop&crop=faces" alt="BS. Thu Hà" style="width:30px;height:30px;border-radius:15px;object-fit:cover;border:2px solid #fff">
+              <img src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?w=120&h=120&q=75&auto=format&fit=crop&crop=faces" alt="ĐD. Lan Anh" style="width:30px;height:30px;border-radius:15px;object-fit:cover;border:2px solid #fff;margin-left:-9px">
+              <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=120&h=120&q=75&auto=format&fit=crop&crop=faces" alt="KTV. Đức Anh" style="width:30px;height:30px;border-radius:15px;object-fit:cover;border:2px solid #fff;margin-left:-9px">
+            </div>
+            <span style="flex:1;font:500 11.5px/1.4 Manrope,sans-serif;color:#6B7370">BS. Thu Hà · ĐD. Lan Anh · KTV. Đức Anh</span>
+            <div style="height:38px;padding:0 16px;border-radius:19px;background:#101413;display:flex;align-items:center"><span style="font:700 13px Manrope,sans-serif;color:#fff">Tìm chuyên gia</span></div>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#EFF2F1;margin:22px 16px 0"></div>
+
+        <div style="margin:22px 16px 0">
+          <div style="font:800 10px Manrope,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#B96A00">Dinh dưỡng</div>
+          <div style="font:800 21px/1.25 Manrope,sans-serif;letter-spacing:-.03em;margin-top:6px;text-wrap:pretty">Bữa trưa nhẹ từ Bếp Xanh</div>
+          <div style="font:500 12.5px Manrope,sans-serif;color:#6B7370;margin-top:5px">Hôm nay bạn đã ghi 1 món · 420 kcal · 32g đạm</div>
+          <div style="display:flex;gap:9px;margin-top:12px">
+            <img src="https://images.unsplash.com/photo-1631709497146-a239ef373cf1?w=300&h=300&q=75&auto=format&fit=crop" alt="Bún chay rau củ" style="flex:1;height:96px;border-radius:16px;object-fit:cover">
+            <img src="https://images.unsplash.com/photo-1594020293008-5f99f60bd4d7?w=300&h=300&q=75&auto=format&fit=crop" alt="Gỏi cuốn chay" style="flex:1;height:96px;border-radius:16px;object-fit:cover">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=300&q=75&auto=format&fit=crop" alt="Bowl cầu vồng" style="flex:1;height:96px;border-radius:16px;object-fit:cover">
+          </div>
+        </div>
+
+        <div style="height:1px;background:#EFF2F1;margin:22px 16px 0"></div>
+
+        <div style="margin:22px 16px 0">
+          <div style="font:800 10px Manrope,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#0587A5">Vận động</div>
+          <div style="font:800 21px/1.25 Manrope,sans-serif;letter-spacing:-.03em;margin-top:6px;text-wrap:pretty">Dưỡng sinh buổi sáng, công viên Tao Đàn</div>
+          <img src="https://images.unsplash.com/photo-1774618623680-c2286dd71734?w=800&h=460&q=75&auto=format&fit=crop" alt="Dưỡng sinh" style="width:100%;height:150px;border-radius:20px;object-fit:cover;display:block;margin-top:12px">
+        </div>
+
+        <div style="height:26px"></div>
+        <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;bottom:0;margin-top:auto;padding:10px 14px 24px;background:linear-gradient(to top,#fff 62%,rgba(255,255,255,0))">
+          <div style="display:flex;background:#fff;border:1px solid #E7EAE9;border-radius:24px;box-shadow:0 8px 28px rgba(16,20,19,.12);padding:9px 4px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="home" style="font-size:21px;color:#0E8A6A"></ion-icon><span style="font:700 10.5px Manrope,sans-serif;color:#0E8A6A">Trang chủ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="grid-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Dịch vụ</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="receipt-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Hoạt động</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px"><ion-icon name="person-outline" style="font-size:21px;color:#98A19E"></ion-icon><span style="font:600 10.5px Manrope,sans-serif;color:#98A19E">Tài khoản</span></div>
+          </div>
+        </div>
+        </sc-if>
+      </div>
+    </x-import>
+    </div>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+    <p class="dv-note">Answers "what do I need to do right now?" before anything else. The five pillars become a filter row, and below it an editorial feed where colour belongs to the pillar, not the chrome. Most opinionated, least like the app today.</p>
+    </sc-if>
+  </div>
+
+</div>
+<p class="dv-next">Try next: "commit to <a class="dv-oid" href="#1b">1b</a> and build the care booking + live tracking flow" · "<a class="dv-oid" href="#1b">1b</a> header with the <a class="dv-oid" href="#1a">1a</a> timeline" · "now do Dịch vụ, Hoạt động and the provider side"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTabBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Chrome&quot;},&quot;showLiveCare&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Chrome&quot;},&quot;annotations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showTabBar: this.props.showTabBar ?? true,
+      showLiveCare: this.props.showLiveCare ?? true,
+      annotations: this.props.annotations ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

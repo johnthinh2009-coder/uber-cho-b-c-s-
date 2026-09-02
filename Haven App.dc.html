@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#000;font-family:Manrope,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#19C08C;text-decoration:none}a:hover{color:#22d69e}
+*{box-sizing:border-box}::-webkit-scrollbar{width:0;height:0;background:transparent}
+*{scrollbar-width:none;-ms-overflow-style:none}
+svg{overflow:visible}[data-a]{transform-box:fill-box;transform-origin:center}
+@keyframes hv-beat{0%,100%{transform:scale(1)}12%{transform:scale(1.18)}24%{transform:scale(1)}36%{transform:scale(1.1)}48%{transform:scale(1)}}
+@keyframes hv-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.22);opacity:.5}}
+@keyframes hv-draw{0%{stroke-dashoffset:70}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-70}}
+@keyframes hv-spin{to{transform:rotate(360deg)}}
+@keyframes hv-bar{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+@keyframes hv-steam{0%{transform:translateY(4px);opacity:0}35%{opacity:.95}100%{transform:translateY(-9px);opacity:0}}
+@keyframes hv-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3.5px)}}
+@keyframes hv-swing{0%,100%{transform:rotate(-19deg)}50%{transform:rotate(19deg)}}
+@keyframes hv-nod{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes hv-drop{0%{transform:translateY(-6px);opacity:0}45%{opacity:1}100%{transform:translateY(7px);opacity:0}}
+@keyframes hv-radar{0%{transform:scale(.3);opacity:.9}100%{transform:scale(1);opacity:0}}
+@keyframes hv-route{to{stroke-dashoffset:-360}}
+@keyframes hv-blink{0%,100%{opacity:1}50%{opacity:.22}}
+@keyframes hv-sweep{to{transform:rotate(360deg)}}
+@keyframes hv-rise{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes hv-slide{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes hv-pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@keyframes hv-shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-13deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}}
+</style></helmet>
+
+<div style="min-height:100vh;background:#000;display:flex;justify-content:center">
+<div style="width:100%;max-width:430px;min-height:100vh;background:#000;color:#F5F7F6;position:relative;display:flex;flex-direction:column;overflow:hidden">
+
+<sc-if value="{{ is_welcome }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .4s cubic-bezier(.2,.8,.2,1) both">
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:64px 0 0;min-height:280px">
+    <svg width="232" height="232" viewBox="0 0 232 232">
+      <circle cx="116" cy="116" r="98" fill="#0C1A15"></circle>
+      <circle cx="116" cy="116" r="98" fill="none" stroke="#19C08C" stroke-width="1.5" opacity=".32" data-a style="animation:hv-radar 3.2s ease-out infinite"></circle>
+      <path d="M63 125 L116 79 L169 125 V173 a6 6 0 0 1-6 6 H69 a6 6 0 0 1-6-6 Z" fill="#19C08C"></path>
+      <path d="M116 79 L169 125 H63 Z" fill="#0F9E73"></path>
+      <g data-a style="animation:hv-beat 2.2s ease-in-out infinite">
+        <rect x="107" y="129" width="18" height="34" rx="4.5" fill="#04140F"></rect>
+        <rect x="99" y="137" width="34" height="18" rx="4.5" fill="#04140F"></rect>
+      </g>
+      <g data-a style="animation:hv-float 3.2s ease-in-out infinite"><circle cx="190" cy="70" r="14" fill="#4A9EFF"></circle><path d="M184 70 h12 M190 64 v12" stroke="#04140F" stroke-width="3.2" stroke-linecap="round"></path></g>
+      <g data-a style="animation:hv-float 3s ease-in-out .5s infinite"><rect x="28" y="150" width="28" height="28" rx="10" fill="#FFB020"></rect><path d="M36 164 h12" stroke="#04140F" stroke-width="3.2" stroke-linecap="round"></path></g>
+      <g data-a style="animation:hv-float 3.6s ease-in-out .9s infinite"><circle cx="184" cy="176" r="11" fill="#A78BFA"></circle></g>
+    </svg>
+  </div>
+  <div style="padding:0 22px">
+    <div style="font:800 37px/1.06 Manrope,sans-serif;letter-spacing:-.045em;text-wrap:pretty">Sức khoẻ cả nhà,<br>gọn trong một app</div>
+    <div style="font:500 14.5px/1.6 Manrope,sans-serif;color:#8B928F;margin-top:14px">Bác sĩ và điều dưỡng đến tận nhà, bữa ăn lành mạnh, lời nhắc thuốc và hồ sơ cả gia đình.</div>
+  </div>
+  <div style="padding:26px 18px 28px;display:flex;flex-direction:column;gap:10px">
+    <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E7673;padding:0 4px 2px">Bạn là ai?</div>
+
+    <div onClick="{{ enterCustomer }}" style="display:flex;align-items:center;gap:15px;padding:15px;background:#121413;border:1px solid #1F2321;border-radius:22px;cursor:pointer">
+      <svg width="62" height="62" viewBox="0 0 64 64" style="flex:none">
+        <rect width="64" height="64" rx="20" fill="#0C1A15"></rect>
+        <g data-a style="animation:hv-float 3.2s ease-in-out infinite">
+          <circle cx="23" cy="24" r="7" fill="#19C08C"></circle>
+          <path d="M12 50 c0-7.2 4.9-11.8 11-11.8 s11 4.6 11 11.8 z" fill="#0F9E73"></path>
+        </g>
+        <g data-a style="animation:hv-float 3.2s ease-in-out .55s infinite">
+          <circle cx="42" cy="30" r="5.4" fill="#FFB020"></circle>
+          <path d="M33 50 c0-5.6 4-9.2 9-9.2 s9 3.6 9 9.2 z" fill="#E09000"></path>
+        </g>
+        <path d="M32.5 15 c-2-2.2-5.2-.9-5.2 1.8 0 2.2 2.6 4.2 5.2 6.2 2.6-2 5.2-4 5.2-6.2 0-2.7-3.2-4-5.2-1.8 Z" fill="#FF6B5A" data-a style="animation:hv-beat 1.9s ease-in-out infinite"></path>
+      </svg>
+      <div style="flex:1;min-width:0">
+        <div style="font:800 16.5px Manrope,sans-serif;letter-spacing:-.02em">Tôi cần chăm sóc</div>
+        <div style="font:500 12px/1.45 Manrope,sans-serif;color:#8B928F;margin-top:3px">Cho bản thân và cả gia đình</div>
+      </div>
+      <svg width="17" height="17" viewBox="0 0 16 16" style="flex:none"><path d="M5.5 3 L11 8 L5.5 13" fill="none" stroke="#8B928F" stroke-width="2.1" stroke-linecap="round"></path></svg>
+    </div>
+
+    <div onClick="{{ enterProvider }}" style="display:flex;align-items:center;gap:15px;padding:15px;background:#121413;border:1px solid #1F2321;border-radius:22px;cursor:pointer">
+      <svg width="62" height="62" viewBox="0 0 64 64" style="flex:none">
+        <rect width="64" height="64" rx="20" fill="#0A1526"></rect>
+        <circle cx="32" cy="24" r="7.6" fill="#F5F7F6"></circle>
+        <path d="M18 52 c0-8 6.3-13.2 14-13.2 s14 5.2 14 13.2 z" fill="#4A9EFF"></path>
+        <path d="M22 17.5 L42 17.5 L38.4 8 H25.6 Z" fill="#2B7FE0" data-a style="animation:hv-nod 3.6s ease-in-out infinite"></path>
+        <g data-a style="animation:hv-nod 3.6s ease-in-out infinite"><rect x="30.4" y="9.6" width="3.2" height="5.4" rx="1.2" fill="#F5F7F6"></rect><rect x="29.3" y="10.7" width="5.4" height="3.2" rx="1.2" fill="#F5F7F6"></rect></g>
+        <path d="M24 42 h4.4 l2-4.6 l2.8 8.4 l2-3.8 H40" fill="none" stroke="#0A1526" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 2.6s ease-in-out infinite"></path>
+      </svg>
+      <div style="flex:1;min-width:0">
+        <div style="font:800 16.5px Manrope,sans-serif;letter-spacing:-.02em">Tôi là chuyên gia y tế</div>
+        <div style="font:500 12px/1.45 Manrope,sans-serif;color:#8B928F;margin-top:3px">Bác sĩ, điều dưỡng, kỹ thuật viên</div>
+      </div>
+      <svg width="17" height="17" viewBox="0 0 16 16" style="flex:none"><path d="M5.5 3 L11 8 L5.5 13" fill="none" stroke="#8B928F" stroke-width="2.1" stroke-linecap="round"></path></svg>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:8px 0 2px"><div style="flex:1;height:1px;background:#1F2321"></div><span style="font:700 11px Manrope,sans-serif;color:#5E6663">HOẶC</span><div style="flex:1;height:1px;background:#1F2321"></div></div>
+
+    <div onClick="{{ enterGuest }}" style="display:flex;align-items:center;gap:15px;padding:15px;background:#0E100F;border:1px dashed #2E3835;border-radius:22px;cursor:pointer">
+      <svg width="62" height="62" viewBox="0 0 64 64" style="flex:none">
+        <rect width="64" height="64" rx="20" fill="#0B0D0C"></rect>
+        <circle cx="30" cy="26" r="7.4" fill="none" stroke="#19C08C" stroke-width="2.4" stroke-dasharray="4 4" data-a style="animation:hv-spin 9s linear infinite"></circle>
+        <path d="M17 50 c0-7.4 5.9-12 13-12 s13 4.6 13 12" fill="none" stroke="#19C08C" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="4 4.4"></path>
+        <g data-a style="animation:hv-float 2.6s ease-in-out infinite">
+          <circle cx="45" cy="20" r="7" fill="none" stroke="#FFB020" stroke-width="2.6"></circle>
+          <path d="M50 25 L55 30" stroke="#FFB020" stroke-width="2.8" stroke-linecap="round"></path>
+        </g>
+      </svg>
+      <div style="flex:1;min-width:0">
+        <div style="font:800 16.5px Manrope,sans-serif;letter-spacing:-.02em;color:#19C08C">Tiếp tục với tư cách khách</div>
+        <div style="font:500 12px/1.45 Manrope,sans-serif;color:#6E7673;margin-top:3px">Xem dịch vụ, quán ăn và bài tập — không cần tài khoản</div>
+      </div>
+    </div>
+
+    <div style="font:600 11.5px/1.55 Manrope,sans-serif;color:#5E6663;text-align:center;margin-top:6px">Cần đăng nhập khi đặt lịch, đặt món hoặc lưu hồ sơ gia đình.</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_home }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .32s cubic-bezier(.2,.8,.2,1) both">
+  <div style="display:flex;align-items:center;gap:11px;padding:52px 18px 0">
+    <div style="flex:1;min-width:0">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E7673">Chăm sóc tại</div>
+      <div style="display:flex;align-items:center;gap:5px;margin-top:4px">
+        <span style="font:800 14.5px Manrope,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ address }}</span>
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 L6 8 L9.5 4.5" fill="none" stroke="#8B928F" stroke-width="1.9" stroke-linecap="round"></path></svg>
+      </div>
+    </div>
+    <div onClick="{{ go_chat }}" style="position:relative;width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3.5 6.5A2.5 2.5 0 0 1 6 4h12a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 18 16h-7.6l-4.9 3.6A.6.6 0 0 1 4.6 19v-3H6a2.5 2.5 0 0 1-2.5-2.5Z" fill="#F5F7F6"></path><circle cx="9" cy="10" r="1.3" fill="#121413" data-a style="animation:hv-blink 1.5s ease-in-out infinite"></circle><circle cx="12.5" cy="10" r="1.3" fill="#121413" data-a style="animation:hv-blink 1.5s ease-in-out .2s infinite"></circle><circle cx="16" cy="10" r="1.3" fill="#121413" data-a style="animation:hv-blink 1.5s ease-in-out .4s infinite"></circle></svg>
+      <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:7px;right:7px;width:9px;height:9px;border-radius:5px;background:#19C08C;border:2px solid #000"></div></sc-if>
+    </div>
+    <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
+      <img onClick="{{ go_account }}" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Minh Anh" style="width:40px;height:40px;border-radius:20px;object-fit:cover;cursor:pointer">
+    </sc-if>
+    <sc-if value="{{ guest }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ go_account }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="#8B928F" stroke-width="1.9"></circle><path d="M5 20.5 c0-3.9 3.1-6.5 7-6.5 s7 2.6 7 6.5" fill="none" stroke="#8B928F" stroke-width="1.9" stroke-linecap="round" stroke-dasharray="3 3.4"></path></svg></div>
+    </sc-if>
+  </div>
+
+  <div style="padding:22px 18px 0">
+    <div style="font:800 31px/1.1 Manrope,sans-serif;letter-spacing:-.038em">{{ greeting }}</div>
+    <div style="font:500 13px Manrope,sans-serif;color:#8B928F;margin-top:5px">{{ todayLine }}</div>
+  </div>
+
+  <sc-if value="{{ guest }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ openGate }}" style="display:flex;align-items:center;gap:12px;margin:16px 18px 0;padding:14px;background:#0C1A15;border:1px solid #19C08C;border-radius:18px;cursor:pointer">
+    <svg width="34" height="34" viewBox="0 0 48 48" style="flex:none"><circle cx="24" cy="17" r="8" fill="#19C08C"></circle><path d="M9 42 c0-8.3 6.7-13.5 15-13.5 s15 5.2 15 13.5 z" fill="#0F9E73"></path></svg>
+    <div style="flex:1;min-width:0">
+      <div style="font:800 14px Manrope,sans-serif">Bạn đang ở chế độ khách</div>
+      <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#7FD9BE;margin-top:2px">Đăng nhập để đặt lịch, đặt món và lưu hồ sơ gia đình</div>
+    </div>
+    <div style="height:34px;padding:0 14px;border-radius:17px;background:#19C08C;display:flex;align-items:center;flex:none"><span style="font:800 12px Manrope,sans-serif;color:#00170F">Đăng nhập</span></div>
+  </div>
+  </sc-if>
+
+  <div onClick="{{ go_services }}" style="display:flex;align-items:center;gap:11px;margin:18px 18px 0;height:54px;padding:0 18px;background:#121413;border:1px solid #1F2321;border-radius:16px;cursor:pointer">
+    <svg width="19" height="19" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7" fill="none" stroke="#F5F7F6" stroke-width="2.1"></circle><path d="M15.8 15.8 L20 20" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round"></path></svg>
+    <span style="font:600 15px Manrope,sans-serif;color:#8B928F">Bạn cần hỗ trợ gì hôm nay?</span>
+  </div>
+
+  <sc-if value="{{ careLive }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ go_tracking }}" style="margin:14px 18px 0;background:#0C1A15;border:1px solid #19C08C;border-radius:20px;padding:15px;cursor:pointer;animation:hv-pop .34s cubic-bezier(.2,.8,.2,1) both">
+    <div style="display:flex;align-items:center;gap:11px">
+      <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="BS. Nguyễn Thu Hà" style="width:44px;height:44px;border-radius:14px;object-fit:cover">
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:7px;height:7px;border-radius:4px;background:#19C08C;animation:hv-blink 1.2s ease-in-out infinite"></div>
+          <span style="font:800 9.5px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#19C08C">{{ careStageLabel }}</span>
+        </div>
+        <div style="font:800 15px Manrope,sans-serif;margin-top:3px">{{ careProName }}</div>
+        <div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:1px">{{ careEta }}</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M5.5 3 L11 8 L5.5 13" fill="none" stroke="#8B928F" stroke-width="2" stroke-linecap="round"></path></svg>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 18px 0">
+    <div onClick="{{ pickDoctor }}" style="background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="52" height="52" viewBox="0 0 48 48">
+        <path d="M9 25 L24 12.5 L39 25 V38 a2.5 2.5 0 0 1-2.5 2.5 H11.5 A2.5 2.5 0 0 1 9 38 Z" fill="#19C08C"></path>
+        <path d="M24 12.5 L39 25 H9 Z" fill="#0F9E73"></path>
+        <g data-a style="animation:hv-beat 2.1s ease-in-out infinite"><rect x="21" y="26" width="6" height="12" rx="1.8" fill="#04140F"></rect><rect x="18" y="29" width="12" height="6" rx="1.8" fill="#04140F"></rect></g>
+        <circle cx="39.5" cy="12" r="5.5" fill="#4A9EFF" data-a style="animation:hv-float 3s ease-in-out infinite"></circle>
+      </svg>
+      <div style="font:800 15px Manrope,sans-serif;margin-top:10px">Bác sĩ tại nhà</div>
+      <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#6E7673;margin-top:3px">Đến trong ~20 phút</div>
+    </div>
+    <div onClick="{{ pickNurse }}" style="background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="52" height="52" viewBox="0 0 48 48">
+        <path d="M11 41 c0-7.5 5.8-12.5 13-12.5 s13 5 13 12.5 z" fill="#4A9EFF"></path>
+        <circle cx="24" cy="19" r="7.5" fill="#F5F7F6"></circle>
+        <path d="M15.5 13.5 L32.5 13.5 L29.5 6 H18.5 Z" fill="#4A9EFF" data-a style="animation:hv-nod 3.4s ease-in-out infinite"></path>
+        <g data-a style="animation:hv-nod 3.4s ease-in-out infinite"><rect x="22.6" y="7.6" width="2.8" height="4.6" rx="1" fill="#F5F7F6"></rect><rect x="21.7" y="8.5" width="4.6" height="2.8" rx="1" fill="#F5F7F6"></rect></g>
+        <path d="M14 36 h4.5 l2-4.5 l2.6 8 l2-3.5 H34" fill="none" stroke="#04140F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 2.8s ease-in-out infinite"></path>
+      </svg>
+      <div style="font:800 15px Manrope,sans-serif;margin-top:10px">Điều dưỡng</div>
+      <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#6E7673;margin-top:3px">Thay băng, tiêm, sinh hiệu</div>
+    </div>
+    <div onClick="{{ pickPhysio }}" style="background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="52" height="52" viewBox="0 0 48 48">
+        <circle cx="20" cy="11" r="6" fill="#A78BFA"></circle>
+        <path d="M17 18 h7 a3 3 0 0 1 3 3 v10 a3 3 0 0 1-3 3 h-7 a3 3 0 0 1-3-3 V21 a3 3 0 0 1 3-3 Z" fill="#7C5CFF"></path>
+        <g data-a style="transform-origin:20px 33px;animation:hv-swing 2.4s ease-in-out infinite"><rect x="17" y="31" width="6" height="14" rx="3" fill="#A78BFA"></rect></g>
+        <g data-a style="transform-origin:26px 22px;animation:hv-swing 2.4s ease-in-out .6s infinite"><rect x="24" y="20" width="14" height="5.6" rx="2.8" fill="#C4B5FD"></rect></g>
+      </svg>
+      <div style="font:800 15px Manrope,sans-serif;margin-top:10px">Vật lý trị liệu</div>
+      <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#6E7673;margin-top:3px">Giảm đau, phục hồi</div>
+    </div>
+    <div onClick="{{ pickElder }}" style="background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="52" height="52" viewBox="0 0 48 48">
+        <circle cx="19" cy="12" r="6" fill="#FFD5CE"></circle>
+        <path d="M13 21 h12 a3 3 0 0 1 3 3 v11 a3 3 0 0 1-3 3 H13 a3 3 0 0 1-3-3 V24 a3 3 0 0 1 3-3 Z" fill="#FF6B5A"></path>
+        <rect x="16" y="36" width="5" height="9" rx="2.5" fill="#FFD5CE"></rect>
+        <path d="M31 20 V43" stroke="#FFB020" stroke-width="3" stroke-linecap="round" data-a style="transform-origin:31px 43px;animation:hv-nod 3s ease-in-out infinite"></path>
+        <path d="M37 12 c-2.4-2.6-6.2-1-6.2 2.1 0 2.6 3.1 5 6.2 7.4 3.1-2.4 6.2-4.8 6.2-7.4 0-3.1-3.8-4.7-6.2-2.1 Z" fill="#FF6B5A" data-a style="animation:hv-beat 1.8s ease-in-out infinite"></path>
+      </svg>
+      <div style="font:800 15px Manrope,sans-serif;margin-top:10px">Người cao tuổi</div>
+      <div style="font:500 11.5px/1.4 Manrope,sans-serif;color:#6E7673;margin-top:3px">Hỗ trợ sinh hoạt</div>
+    </div>
+  </div>
+
+  <div onClick="{{ go_services }}" style="display:flex;align-items:center;justify-content:center;gap:7px;margin:11px 18px 0;height:48px;border-radius:16px;background:#0E100F;border:1px solid #1F2321;cursor:pointer">
+    <span style="font:800 13.5px Manrope,sans-serif;color:#19C08C">Xem tất cả 9 dịch vụ chăm sóc</span>
+    <svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 8 H12.5 M9 4.5 L12.5 8 L9 11.5" fill="none" stroke="#19C08C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  </div>
+
+  <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin:30px 18px 0">
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Hôm nay</span>
+    <span onClick="{{ go_meds }}" style="font:800 13px Manrope,sans-serif;color:#19C08C;cursor:pointer">Xem tất cả</span>
+  </div>
+  <div style="margin:14px 18px 0">
+    <sc-for list="{{ doses }}" as="d" hint-placeholder-count="3">
+      <div style="display:grid;grid-template-columns:44px 18px 1fr;align-items:start">
+        <div style="font:800 12.5px Manrope,sans-serif;color:#6E7673;padding-top:12px;font-variant-numeric:tabular-nums">{{ d.time }}</div>
+        <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch;padding-top:15px">
+          <sc-if value="{{ d.taken }}" hint-placeholder-val="{{ true }}"><div style="width:10px;height:10px;border-radius:5px;background:#19C08C"></div></sc-if>
+          <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ false }}"><div style="width:10px;height:10px;border-radius:5px;background:#0E100F;border:2px solid #3A403D"></div></sc-if>
+          <div style="flex:1;width:2px;background:#1F2321;min-height:26px"></div>
+        </div>
+        <div style="padding:8px 0 18px;display:flex;align-items:center;gap:10px">
+          <div style="flex:1;min-width:0">
+            <sc-if value="{{ d.taken }}" hint-placeholder-val="{{ true }}">
+              <div style="font:700 14.5px Manrope,sans-serif;color:#5E6663;text-decoration:line-through">{{ d.name }}</div>
+              <div style="font:500 11.5px Manrope,sans-serif;color:#5E6663;margin-top:2px">{{ d.dose }} · đã uống</div>
+            </sc-if>
+            <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ false }}">
+              <div style="font:800 14.5px Manrope,sans-serif">{{ d.name }}</div>
+              <div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:2px">{{ d.dose }}</div>
+            </sc-if>
+          </div>
+          <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ d.take }}" style="height:36px;padding:0 15px;border-radius:18px;background:#F5F7F6;display:flex;align-items:center;cursor:pointer"><span style="font:800 12.5px Manrope,sans-serif;color:#000">Đã uống</span></div>
+          </sc-if>
+          <sc-if value="{{ d.taken }}" hint-placeholder-val="{{ true }}">
+            <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#19C08C"></circle><path d="M7.5 12.4 L10.6 15.4 L16.5 9" fill="none" stroke="#04140F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin:26px 18px 0">
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Quán ăn dành cho bạn</span>
+    <span onClick="{{ go_food }}" style="font:800 13px Manrope,sans-serif;color:#19C08C;cursor:pointer">Xem tất cả</span>
+  </div>
+  <div style="display:flex;gap:12px;padding:14px 18px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none">
+    <sc-for list="{{ restaurants }}" as="r" hint-placeholder-count="2">
+      <div onClick="{{ r.open }}" style="width:212px;flex:none;cursor:pointer">
+        <img src="{{ r.photo }}" alt="{{ r.name }}" style="width:212px;height:122px;border-radius:16px;object-fit:cover;display:block">
+        <div style="font:800 14.5px Manrope,sans-serif;margin-top:9px">{{ r.name }}</div>
+        <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.tagline }}</div>
+        <div style="display:flex;align-items:center;gap:5px;margin-top:5px">
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1 L7.5 4.4 L11 4.9 L8.5 7.4 L9.1 11 L6 9.3 L2.9 11 L3.5 7.4 L1 4.9 L4.5 4.4 Z" fill="#FFB020"></path></svg>
+          <span style="font:700 11.5px Manrope,sans-serif;color:#8B928F">{{ r.rating }} · {{ r.eta }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;gap:10px;margin:26px 18px 0">
+    <div onClick="{{ go_fitness }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="46" height="46" viewBox="0 0 48 48">
+        <rect x="6" y="18" width="7" height="12" rx="3.5" fill="#22D3EE" data-a style="animation:hv-bar 1.5s ease-in-out infinite"></rect>
+        <rect x="16" y="12" width="7" height="24" rx="3.5" fill="#22D3EE" data-a style="animation:hv-bar 1.5s ease-in-out .2s infinite"></rect>
+        <rect x="26" y="16" width="7" height="18" rx="3.5" fill="#0EA5C4" data-a style="animation:hv-bar 1.5s ease-in-out .4s infinite"></rect>
+        <rect x="36" y="21" width="7" height="9" rx="3.5" fill="#0EA5C4" data-a style="animation:hv-bar 1.5s ease-in-out .6s infinite"></rect>
+      </svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Vận động</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ fitLine }}</div>
+    </div>
+    <div onClick="{{ go_family }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="46" height="46" viewBox="0 0 48 48">
+        <circle cx="16" cy="15" r="6.5" fill="#FFB020"></circle>
+        <path d="M6 40 c0-6.6 4.5-11 10-11 s10 4.4 10 11 z" fill="#E09000"></path>
+        <circle cx="33" cy="20" r="5" fill="#19C08C" data-a style="animation:hv-float 2.8s ease-in-out infinite"></circle>
+        <path d="M25 40 c0-5 3.6-8.5 8-8.5 s8 3.5 8 8.5 z" fill="#0F9E73" data-a style="animation:hv-float 2.8s ease-in-out infinite"></path>
+      </svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Gia đình</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ familyLine }}</div>
+    </div>
+  </div>
+  <div style="height:26px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_services }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="padding:52px 18px 0">
+    <div style="font:800 28px/1.12 Manrope,sans-serif;letter-spacing:-.038em">Dịch vụ</div>
+    <div style="font:500 13px/1.5 Manrope,sans-serif;color:#8B928F;margin-top:6px">Chuyên gia đã xác minh, đến tận nhà bạn ở TP.HCM.</div>
+  </div>
+  <div style="margin:20px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ careServices }}" as="s" hint-placeholder-count="6">
+      <div onClick="{{ s.open }}" style="display:flex;align-items:center;gap:14px;padding:13px;background:#121413;border:1px solid #1F2321;border-radius:20px;cursor:pointer">
+        <div style="width:58px;height:58px;border-radius:18px;background:#0B0D0C;display:flex;align-items:center;justify-content:center;flex:none">
+          <sc-if value="{{ s.i1 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><path d="M9 25 L24 12.5 L39 25 V38 a2.5 2.5 0 0 1-2.5 2.5 H11.5 A2.5 2.5 0 0 1 9 38 Z" fill="#19C08C"></path><path d="M24 12.5 L39 25 H9 Z" fill="#0F9E73"></path><g data-a style="animation:hv-beat 2.1s ease-in-out infinite"><rect x="21" y="26" width="6" height="12" rx="1.8" fill="#04140F"></rect><rect x="18" y="29" width="12" height="6" rx="1.8" fill="#04140F"></rect></g></svg></sc-if>
+          <sc-if value="{{ s.i2 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><path d="M11 41 c0-7.5 5.8-12.5 13-12.5 s13 5 13 12.5 z" fill="#4A9EFF"></path><circle cx="24" cy="19" r="7.5" fill="#F5F7F6"></circle><path d="M15.5 13.5 L32.5 13.5 L29.5 6 H18.5 Z" fill="#2B7FE0" data-a style="animation:hv-nod 3.4s ease-in-out infinite"></path><path d="M14 36 h4.5 l2-4.5 l2.6 8 l2-3.5 H34" fill="none" stroke="#04140F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 2.8s ease-in-out infinite"></path></svg></sc-if>
+          <sc-if value="{{ s.i3 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><circle cx="20" cy="11" r="6" fill="#A78BFA"></circle><path d="M17 18 h7 a3 3 0 0 1 3 3 v10 a3 3 0 0 1-3 3 h-7 a3 3 0 0 1-3-3 V21 a3 3 0 0 1 3-3 Z" fill="#7C5CFF"></path><g data-a style="transform-origin:20px 33px;animation:hv-swing 2.4s ease-in-out infinite"><rect x="17" y="31" width="6" height="14" rx="3" fill="#A78BFA"></rect></g><g data-a style="transform-origin:26px 22px;animation:hv-swing 2.4s ease-in-out .6s infinite"><rect x="24" y="20" width="14" height="5.6" rx="2.8" fill="#C4B5FD"></rect></g></svg></sc-if>
+          <sc-if value="{{ s.i4 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><circle cx="19" cy="12" r="6" fill="#FFD5CE"></circle><path d="M13 21 h12 a3 3 0 0 1 3 3 v11 a3 3 0 0 1-3 3 H13 a3 3 0 0 1-3-3 V24 a3 3 0 0 1 3-3 Z" fill="#FF6B5A"></path><path d="M31 20 V43" stroke="#FFB020" stroke-width="3" stroke-linecap="round" data-a style="transform-origin:31px 43px;animation:hv-nod 3s ease-in-out infinite"></path><path d="M37 12 c-2.4-2.6-6.2-1-6.2 2.1 0 2.6 3.1 5 6.2 7.4 3.1-2.4 6.2-4.8 6.2-7.4 0-3.1-3.8-4.7-6.2-2.1 Z" fill="#FF6B5A" data-a style="animation:hv-beat 1.8s ease-in-out infinite"></path></svg></sc-if>
+          <sc-if value="{{ s.i5 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="9" rx="3" fill="#8B928F"></rect><path d="M17 16 h14 v20 a7 7 0 0 1-14 0 Z" fill="#F5F7F6"></path><path d="M17 27 h14 v9 a7 7 0 0 1-14 0 Z" fill="#FF6B5A" data-a style="animation:hv-pulse 2.6s ease-in-out infinite"></path><circle cx="36" cy="15" r="3.4" fill="#FFB020" data-a style="animation:hv-drop 2.2s ease-in-out infinite"></circle></svg></sc-if>
+          <sc-if value="{{ s.i6 }}" hint-placeholder-val="{{ false }}"><svg width="42" height="42" viewBox="0 0 48 48"><path d="M24 40 c-9-6-16-11-16-19 a9 9 0 0 1 16-5.4 A9 9 0 0 1 40 21 c0 8-7 13-16 19 Z" fill="#A78BFA" data-a style="animation:hv-beat 2s ease-in-out infinite"></path><path d="M13 22 h5 l2.4-5 l3.2 9.4 l2.4-4.4 H35" fill="none" stroke="#2E1A6B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 3s ease-in-out infinite"></path></svg></sc-if>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font:800 15.5px Manrope,sans-serif">{{ s.name }}</div>
+          <div style="font:500 12px/1.45 Manrope,sans-serif;color:#6E7673;margin-top:3px">{{ s.desc }}</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" style="flex:none"><path d="M5.5 3 L11 8 L5.5 13" fill="none" stroke="#5E6663" stroke-width="2" stroke-linecap="round"></path></svg>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:26px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_service }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="position:relative">
+    <img src="{{ svc.photo }}" alt="{{ svc.name }}" style="width:100%;height:250px;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,#000 5%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.5))"></div>
+    <div onClick="{{ back }}" style="position:absolute;top:52px;left:18px;width:40px;height:40px;border-radius:20px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <div style="position:absolute;left:18px;right:18px;bottom:16px">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#19C08C">{{ svc.kicker }}</div>
+      <div style="font:800 28px/1.12 Manrope,sans-serif;letter-spacing:-.038em;margin-top:7px;text-wrap:pretty">{{ svc.name }}</div>
+    </div>
+  </div>
+  <div style="padding:18px 18px 0">
+    <div style="font:500 13.5px/1.6 Manrope,sans-serif;color:#A2AAA7">{{ svc.desc }}</div>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:14px;padding:12px"><div style="font:800 18px Manrope,sans-serif;font-variant-numeric:tabular-nums">~20</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">phút để đến</div></div>
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:14px;padding:12px"><div style="font:800 18px Manrope,sans-serif;font-variant-numeric:tabular-nums">{{ svc.available }}</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">đang sẵn sàng</div></div>
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:14px;padding:12px"><div style="font:800 18px Manrope,sans-serif;font-variant-numeric:tabular-nums">4,9</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">điểm trung bình</div></div>
+    </div>
+    <div style="font:800 15px Manrope,sans-serif;margin:26px 0 0">Ai cần được chăm sóc?</div>
+    <div style="display:flex;gap:9px;margin-top:12px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none">
+      <sc-for list="{{ family }}" as="m" hint-placeholder-count="4">
+        <div onClick="{{ m.pick }}" style="flex:none;width:90px;cursor:pointer">
+          <sc-if value="{{ m.selected }}" hint-placeholder-val="{{ true }}">
+            <div style="border:2px solid #19C08C;border-radius:18px;padding:11px 8px;background:#0C1A15;text-align:center">
+              <img src="{{ m.photo }}" alt="{{ m.name }}" style="width:44px;height:44px;border-radius:22px;object-fit:cover">
+              <div style="font:800 11.5px Manrope,sans-serif;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</div>
+              <div style="font:600 10px Manrope,sans-serif;color:#19C08C;margin-top:1px">{{ m.rel }}</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ m.unselected }}" hint-placeholder-val="{{ false }}">
+            <div style="border:2px solid #1F2321;border-radius:18px;padding:11px 8px;text-align:center">
+              <img src="{{ m.photo }}" alt="{{ m.name }}" style="width:44px;height:44px;border-radius:22px;object-fit:cover;opacity:.7">
+              <div style="font:700 11.5px Manrope,sans-serif;margin-top:7px;color:#A2AAA7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</div>
+              <div style="font:600 10px Manrope,sans-serif;color:#6E7673;margin-top:1px">{{ m.rel }}</div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font:800 15px Manrope,sans-serif;margin:24px 0 0">Mức độ cần thiết</div>
+    <div style="display:flex;gap:9px;margin-top:12px">
+      <sc-for list="{{ urgencies }}" as="u" hint-placeholder-count="2">
+        <div onClick="{{ u.pick }}" style="flex:1;cursor:pointer">
+          <sc-if value="{{ u.selected }}" hint-placeholder-val="{{ true }}"><div style="border:2px solid #19C08C;background:#0C1A15;border-radius:16px;padding:13px"><div style="font:800 13.5px Manrope,sans-serif">{{ u.label }}</div><div style="font:500 10.5px/1.35 Manrope,sans-serif;color:#7FD9BE;margin-top:3px">{{ u.note }}</div></div></sc-if>
+          <sc-if value="{{ u.unselected }}" hint-placeholder-val="{{ false }}"><div style="border:2px solid #1F2321;border-radius:16px;padding:13px"><div style="font:700 13.5px Manrope,sans-serif;color:#A2AAA7">{{ u.label }}</div><div style="font:500 10.5px/1.35 Manrope,sans-serif;color:#6E7673;margin-top:3px">{{ u.note }}</div></div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin:22px 0 0;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:16px">
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 21.5 C6.5 16.5 4 13.4 4 10.3 A8 8 0 0 1 20 10.3 C20 13.4 17.5 16.5 12 21.5 Z" fill="#19C08C"></path><circle cx="12" cy="10" r="3" fill="#04140F"></circle></svg>
+      <div style="flex:1;min-width:0"><div style="font:800 13px Manrope,sans-serif">{{ address }}</div><div style="font:500 11px Manrope,sans-serif;color:#6E7673;margin-top:1px">Căn hộ 12A · gọi trước khi tới</div></div>
+      <span style="font:800 12px Manrope,sans-serif;color:#19C08C;cursor:pointer">Đổi</span>
+    </div>
+  </div>
+  <div style="height:110px"></div>
+  <div style="position:sticky;bottom:0;padding:14px 18px 26px;background:linear-gradient(to top,#000 55%,rgba(0,0,0,0))">
+    <div onClick="{{ startCare }}" style="height:56px;border-radius:18px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
+      <span style="font:800 16px Manrope,sans-serif;color:#000">Tìm chuyên gia ngay</span>
+      <svg width="17" height="17" viewBox="0 0 16 16"><path d="M3 8 H12.5 M9 4.5 L12.5 8 L9 11.5" fill="none" stroke="#000" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_searching }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column">
+  <div style="position:relative;flex:1;min-height:480px;overflow:hidden">
+    <svg viewBox="0 0 430 520" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+      <rect width="430" height="520" fill="#080A09"></rect>
+      <g stroke="#151918" stroke-width="1.4"><path d="M0 90 H430 M0 210 H430 M0 330 H430 M0 450 H430 M70 0 V520 M180 0 V520 M290 0 V520 M380 0 V520"></path></g>
+      <g stroke="#1B211F" stroke-width="7" stroke-linecap="round"><path d="M0 210 H430 M180 0 V520"></path></g>
+      <circle cx="215" cy="262" r="150" fill="none" stroke="#19C08C" stroke-width="1.6" opacity=".5" data-a style="animation:hv-radar 3s ease-out infinite"></circle>
+      <circle cx="215" cy="262" r="150" fill="none" stroke="#19C08C" stroke-width="1.6" opacity=".5" data-a style="animation:hv-radar 3s ease-out 1s infinite"></circle>
+      <circle cx="215" cy="262" r="150" fill="none" stroke="#19C08C" stroke-width="1.6" opacity=".5" data-a style="animation:hv-radar 3s ease-out 2s infinite"></circle>
+      <g style="transform-origin:215px 262px;animation:hv-sweep 4s linear infinite"><path d="M215 262 L215 124" stroke="#19C08C" stroke-width="2.2" stroke-linecap="round" opacity=".6"></path></g>
+      <circle cx="215" cy="262" r="18" fill="#19C08C" opacity=".2" data-a style="animation:hv-pulse 2s ease-in-out infinite"></circle>
+      <circle cx="215" cy="262" r="9" fill="#19C08C"></circle>
+      <g data-a style="animation:hv-float 3s ease-in-out infinite"><circle cx="120" cy="180" r="13" fill="#4A9EFF"></circle><path d="M114 180 h12 M120 174 v12" stroke="#080A09" stroke-width="2.6" stroke-linecap="round"></path></g>
+      <g data-a style="animation:hv-float 3.4s ease-in-out .4s infinite"><circle cx="322" cy="344" r="13" fill="#4A9EFF"></circle><path d="M316 344 h12 M322 338 v12" stroke="#080A09" stroke-width="2.6" stroke-linecap="round"></path></g>
+      <g data-a style="animation:hv-float 2.8s ease-in-out .8s infinite"><circle cx="272" cy="152" r="13" fill="#4A9EFF"></circle><path d="M266 152 h12 M272 146 v12" stroke="#080A09" stroke-width="2.6" stroke-linecap="round"></path></g>
+    </svg>
+    <div onClick="{{ back }}" style="position:absolute;top:52px;left:18px;width:40px;height:40px;border-radius:20px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  </div>
+  <div style="padding:24px 18px 34px;background:#000;border-top:1px solid #1F2321">
+    <div style="display:flex;align-items:center;gap:7px">
+      <div style="width:7px;height:7px;border-radius:4px;background:#19C08C;animation:hv-blink 1.1s ease-in-out infinite"></div>
+      <span style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#19C08C">Đang tìm chuyên gia</span>
+    </div>
+    <div style="font:800 25px/1.2 Manrope,sans-serif;letter-spacing:-.038em;margin-top:10px;text-wrap:pretty">{{ searchHeadline }}</div>
+    <div style="font:500 13px/1.5 Manrope,sans-serif;color:#8B928F;margin-top:7px">{{ svc.name }} · {{ patientName }} · {{ address }}</div>
+    <div style="display:flex;gap:5px;margin-top:18px">
+      <div style="flex:1;height:4px;border-radius:2px;background:#19C08C;animation:hv-blink 1.2s ease-in-out infinite"></div>
+      <div style="flex:1;height:4px;border-radius:2px;background:#19C08C;animation:hv-blink 1.2s ease-in-out .3s infinite"></div>
+      <div style="flex:1;height:4px;border-radius:2px;background:#19C08C;animation:hv-blink 1.2s ease-in-out .6s infinite"></div>
+      <div style="flex:1;height:4px;border-radius:2px;background:#19C08C;animation:hv-blink 1.2s ease-in-out .9s infinite"></div>
+    </div>
+    <div onClick="{{ matchPro }}" style="height:54px;margin-top:20px;border-radius:17px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 15.5px Manrope,sans-serif;color:#000">Đã tìm thấy chuyên gia</span></div>
+    <div onClick="{{ cancelCare }}" style="font:700 13px Manrope,sans-serif;color:#6E7673;text-align:center;margin-top:14px;cursor:pointer">Huỷ yêu cầu</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_tracking }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column">
+  <div style="position:relative;flex:1;min-height:360px;overflow:hidden">
+    <svg viewBox="0 0 430 400" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+      <rect width="430" height="400" fill="#080A09"></rect>
+      <g stroke="#151918" stroke-width="1.4"><path d="M0 70 H430 M0 170 H430 M0 270 H430 M0 370 H430 M60 0 V400 M160 0 V400 M270 0 V400 M370 0 V400"></path></g>
+      <g stroke="#1B211F" stroke-width="8" stroke-linecap="round"><path d="M0 270 H430 M160 0 V400"></path></g>
+      <path d="M78 366 L78 270 L160 270 L160 148 L296 148" fill="none" stroke="#19C08C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".25"></path>
+      <path d="M78 366 L78 270 L160 270 L160 148 L296 148" fill="none" stroke="#19C08C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="46 320" style="animation:hv-route 3.4s linear infinite"></path>
+      <circle cx="296" cy="148" r="21" fill="#19C08C" opacity=".18" data-a style="animation:hv-pulse 2.2s ease-in-out infinite"></circle>
+      <circle cx="296" cy="148" r="9" fill="#19C08C"></circle>
+      <g data-a style="animation:hv-float 2.6s ease-in-out infinite">
+        <rect x="60" y="348" width="36" height="36" rx="12" fill="#F5F7F6"></rect>
+        <rect x="75" y="356" width="6" height="20" rx="2" fill="#000"></rect>
+        <rect x="68" y="363" width="20" height="6" rx="2" fill="#000"></rect>
+      </g>
+    </svg>
+    <div onClick="{{ go_home }}" style="position:absolute;top:52px;left:18px;width:40px;height:40px;border-radius:20px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <div style="position:absolute;top:52px;right:18px;height:40px;padding:0 14px;border-radius:20px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;gap:7px">
+      <div style="width:7px;height:7px;border-radius:4px;background:#19C08C;animation:hv-blink 1.2s ease-in-out infinite"></div>
+      <span style="font:800 11.5px Manrope,sans-serif;color:#fff">{{ careEta }}</span>
+    </div>
+  </div>
+  <div style="background:#000;border-top:1px solid #1F2321;border-radius:26px 26px 0 0;padding:20px 18px 30px;animation:hv-slide .4s cubic-bezier(.2,.8,.2,1) both">
+    <div style="width:38px;height:4px;border-radius:2px;background:#2A2F2C;margin:0 auto 18px"></div>
+    <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#19C08C">{{ careStageLabel }}</div>
+    <div style="font:800 24px/1.2 Manrope,sans-serif;letter-spacing:-.038em;margin-top:8px;text-wrap:pretty">{{ careHeadline }}</div>
+    <div style="display:flex;gap:6px;margin-top:18px">
+      <sc-for list="{{ careSteps }}" as="st" hint-placeholder-count="4">
+        <div style="flex:1">
+          <sc-if value="{{ st.done }}" hint-placeholder-val="{{ true }}"><div style="height:4px;border-radius:2px;background:#19C08C"></div></sc-if>
+          <sc-if value="{{ st.todo }}" hint-placeholder-val="{{ false }}"><div style="height:4px;border-radius:2px;background:#232827"></div></sc-if>
+          <div style="font:700 9.5px Manrope,sans-serif;color:#6E7673;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ st.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:20px;border-top:1px solid #1F2321">
+      <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="BS. Nguyễn Thu Hà" style="width:56px;height:56px;border-radius:18px;object-fit:cover">
+      <div style="flex:1;min-width:0">
+        <div style="font:800 16px Manrope,sans-serif">{{ careProName }}</div>
+        <div style="font:500 12px Manrope,sans-serif;color:#8B928F;margin-top:2px">Bác sĩ đa khoa · 12 năm kinh nghiệm</div>
+        <div style="display:flex;align-items:center;gap:5px;margin-top:4px">
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 1 L7.5 4.4 L11 4.9 L8.5 7.4 L9.1 11 L6 9.3 L2.9 11 L3.5 7.4 L1 4.9 L4.5 4.4 Z" fill="#FFB020"></path></svg>
+          <span style="font:700 11.5px Manrope,sans-serif;color:#A2AAA7">4,9 · 320 lượt khám</span>
+        </div>
+      </div>
+      <div onClick="{{ go_convo }}" style="width:44px;height:44px;border-radius:22px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 24 24"><path d="M3.5 6.5A2.5 2.5 0 0 1 6 4h12a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 18 16h-7.6l-4.9 3.6A.6.6 0 0 1 4.6 19v-3H6a2.5 2.5 0 0 1-2.5-2.5Z" fill="#F5F7F6"></path></svg></div>
+      <div style="width:44px;height:44px;border-radius:22px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 24 24"><path d="M6.5 3.5 8.8 8 7 9.8a12 12 0 0 0 6.2 6.2L15 14.2l4.5 2.3-.7 3.3a1.4 1.4 0 0 1-1.6 1.1C10.6 19.7 4.3 13.4 3.3 6.8A1.4 1.4 0 0 1 4.4 5.2l2.1-1.7Z" fill="#04140F"></path></svg></div>
+    </div>
+    <div onClick="{{ advanceCare }}" style="height:54px;margin-top:20px;border-radius:17px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 15.5px Manrope,sans-serif;color:#000">{{ careCta }}</span></div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_summary }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="padding:56px 18px 0;text-align:center">
+    <svg width="68" height="68" viewBox="0 0 68 68" style="margin:0 auto"><circle cx="34" cy="34" r="32" fill="#0C1A15" stroke="#19C08C" stroke-width="2"></circle><path d="M21 35 L30 44 L47 25" fill="none" stroke="#19C08C" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 3s ease-in-out infinite"></path></svg>
+    <div style="font:800 26px/1.2 Manrope,sans-serif;letter-spacing:-.038em;margin-top:18px">Buổi khám hoàn thành</div>
+    <div style="font:500 13px Manrope,sans-serif;color:#8B928F;margin-top:6px">{{ careProName }} · 42 phút · hôm nay 15:20</div>
+  </div>
+  <div style="margin:26px 18px 0;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:18px">
+    <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#6E7673">Chỉ số sinh hiệu</div>
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">128/82</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">Huyết áp</div></div>
+      <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">76</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">Nhịp tim</div></div>
+      <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">37,1°</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">Nhiệt độ</div></div>
+    </div>
+  </div>
+  <div style="margin:12px 18px 0;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:18px">
+    <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#6E7673">Nhận định của bác sĩ</div>
+    <div style="font:500 13.5px/1.6 Manrope,sans-serif;color:#D6DBD9;margin-top:10px">Viêm phế quản nhẹ, phổi thông khí tốt. Tiếp tục thuốc hít, uống nhiều nước ấm và tái khám nếu ho tăng sau 3 ngày.</div>
+  </div>
+  <div style="margin:12px 18px 0;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#6E7673">Đơn thuốc</div>
+      <span onClick="{{ go_meds }}" style="font:800 12px Manrope,sans-serif;color:#19C08C;cursor:pointer">Thêm vào lời nhắc</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+      <svg width="32" height="32" viewBox="0 0 48 48"><rect x="13" y="8" width="22" height="15" rx="7.5" fill="#FFB020" data-a style="animation:hv-shake 3.6s ease-in-out infinite"></rect><path d="M11 26 h26 l-3 14 a3 3 0 0 1-3 2.6 H17 a3 3 0 0 1-3-2.6 Z" fill="#E09000"></path></svg>
+      <div style="flex:1"><div style="font:800 14px Manrope,sans-serif">Salbutamol dạng hít</div><div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:2px">2 nhát xịt · 2 lần/ngày · 5 ngày</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+      <svg width="32" height="32" viewBox="0 0 48 48"><circle cx="24" cy="24" r="12" fill="#4A9EFF"></circle><path d="M17 24 H31" stroke="#04140F" stroke-width="3" stroke-linecap="round"></path></svg>
+      <div style="flex:1"><div style="font:800 14px Manrope,sans-serif">Acetylcystein 200mg</div><div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:2px">1 gói · 3 lần/ngày · sau ăn</div></div>
+    </div>
+  </div>
+  <div style="height:100px"></div>
+  <div style="position:sticky;bottom:0;padding:14px 18px 28px;background:linear-gradient(to top,#000 55%,rgba(0,0,0,0))">
+    <div onClick="{{ go_rating }}" style="height:56px;border-radius:18px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 16px Manrope,sans-serif;color:#000">Đánh giá buổi khám</span></div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_rating }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="padding:64px 18px 0;text-align:center">
+    <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=240&h=240&q=75&auto=format&fit=crop&crop=faces" alt="{{ careProName }}" style="width:88px;height:88px;border-radius:30px;object-fit:cover">
+    <div style="font:800 25px/1.2 Manrope,sans-serif;letter-spacing:-.038em;margin-top:18px;text-wrap:pretty">{{ careProName }} đã chăm sóc bạn thế nào?</div>
+    <div style="font:500 13px Manrope,sans-serif;color:#8B928F;margin-top:7px">Đánh giá của bạn giúp Haven giữ chất lượng cao</div>
+    <div style="display:flex;justify-content:center;gap:11px;margin-top:26px">
+      <sc-for list="{{ stars }}" as="s" hint-placeholder-count="5">
+        <div onClick="{{ s.pick }}" style="cursor:pointer">
+          <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><svg width="40" height="40" viewBox="0 0 24 24" style="animation:hv-pop .3s ease both"><path d="M12 2 L14.9 8.6 L22 9.6 L16.9 14.6 L18.1 22 L12 18.5 L5.9 22 L7.1 14.6 L2 9.6 L9.1 8.6 Z" fill="#FFB020"></path></svg></sc-if>
+          <sc-if value="{{ s.off }}" hint-placeholder-val="{{ true }}"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 2 L14.9 8.6 L22 9.6 L16.9 14.6 L18.1 22 L12 18.5 L5.9 22 L7.1 14.6 L2 9.6 L9.1 8.6 Z" fill="none" stroke="#3A403D" stroke-width="1.7"></path></svg></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin:30px 18px 0;justify-content:center">
+    <sc-for list="{{ praise }}" as="p" hint-placeholder-count="5">
+      <div onClick="{{ p.toggle }}" style="cursor:pointer">
+        <sc-if value="{{ p.on }}" hint-placeholder-val="{{ false }}"><div style="height:38px;padding:0 15px;border-radius:19px;background:#0C1A15;border:1.5px solid #19C08C;display:flex;align-items:center"><span style="font:800 12.5px Manrope,sans-serif;color:#19C08C">{{ p.label }}</span></div></sc-if>
+        <sc-if value="{{ p.off }}" hint-placeholder-val="{{ true }}"><div style="height:38px;padding:0 15px;border-radius:19px;border:1.5px solid #232827;display:flex;align-items:center"><span style="font:700 12.5px Manrope,sans-serif;color:#A2AAA7">{{ p.label }}</span></div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex:1;min-height:30px"></div>
+  <div style="padding:14px 18px 30px">
+    <div onClick="{{ submitRating }}" style="height:56px;border-radius:18px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 16px Manrope,sans-serif;color:#00170F">Gửi đánh giá</span></div>
+    <div onClick="{{ go_home }}" style="font:700 13px Manrope,sans-serif;color:#6E7673;text-align:center;margin-top:16px;cursor:pointer">Để sau</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_food }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <div style="flex:1;min-width:0">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E7673">Giao đến</div>
+      <div style="font:800 14px Manrope,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px">{{ address }}</div>
+    </div>
+    <div onClick="{{ go_cart }}" style="position:relative;width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M3.5 5 h2.8 a1 1 0 0 1 1 .8 L9.4 16.6 a1.6 1.6 0 0 0 1.6 1.3 h6.6 a1.6 1.6 0 0 0 1.55-1.2 L21 8.6 H8" fill="none" stroke="#F5F7F6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11.5" cy="20.6" r="1.5" fill="#F5F7F6"></circle><circle cx="18" cy="20.6" r="1.5" fill="#F5F7F6"></circle></svg>
+      <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#19C08C;border:2px solid #000;display:flex;align-items:center;justify-content:center;animation:hv-pop .3s ease both"><span style="font:800 10.5px Manrope,sans-serif;color:#00170F">{{ cartCount }}</span></div></sc-if>
+    </div>
+  </div>
+  <div style="padding:22px 18px 0">
+    <div style="font:800 28px/1.14 Manrope,sans-serif;letter-spacing:-.038em">Bạn đang thèm gì?</div>
+    <div style="font:500 13px Manrope,sans-serif;color:#8B928F;margin-top:5px">Món nhà nấu, ít dầu mỡ, ghi rõ dinh dưỡng</div>
+  </div>
+  <div style="display:flex;gap:14px;margin:20px 18px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none">
+    <sc-for list="{{ foodCats }}" as="c" hint-placeholder-count="6">
+      <div onClick="{{ c.pick }}" style="flex:none;width:68px;text-align:center;cursor:pointer">
+        <sc-if value="{{ c.on }}" hint-placeholder-val="{{ false }}"><img src="{{ c.photo }}" alt="{{ c.name }}" style="width:68px;height:68px;border-radius:34px;object-fit:cover;border:2.5px solid #19C08C"></sc-if>
+        <sc-if value="{{ c.off }}" hint-placeholder-val="{{ true }}"><img src="{{ c.photo }}" alt="{{ c.name }}" style="width:68px;height:68px;border-radius:34px;object-fit:cover;opacity:.72"></sc-if>
+        <div style="font:800 11.5px Manrope,sans-serif;margin-top:8px">{{ c.name }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex;gap:8px;margin:22px 18px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none">
+    <sc-for list="{{ diets }}" as="d" hint-placeholder-count="5">
+      <div onClick="{{ d.toggle }}" style="flex:none;cursor:pointer">
+        <sc-if value="{{ d.on }}" hint-placeholder-val="{{ false }}"><div style="height:36px;padding:0 14px;border-radius:18px;background:#19C08C;display:flex;align-items:center"><span style="font:800 12.5px Manrope,sans-serif;color:#00170F">{{ d.label }}</span></div></sc-if>
+        <sc-if value="{{ d.off }}" hint-placeholder-val="{{ true }}"><div style="height:36px;padding:0 14px;border-radius:18px;border:1px solid #232827;display:flex;align-items:center"><span style="font:700 12.5px Manrope,sans-serif;color:#A2AAA7">{{ d.label }}</span></div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em;margin:26px 18px 0">{{ foodListTitle }}</div>
+  <div style="margin:14px 18px 0;display:flex;flex-direction:column;gap:22px">
+    <sc-for list="{{ foodList }}" as="r" hint-placeholder-count="3">
+      <div onClick="{{ r.open }}" style="cursor:pointer">
+        <div style="position:relative">
+          <img src="{{ r.photo }}" alt="{{ r.name }}" style="width:100%;height:176px;border-radius:20px;object-fit:cover;display:block">
+          <div style="position:absolute;left:12px;bottom:12px;display:flex;gap:6px">
+            <div style="height:28px;padding:0 11px;border-radius:14px;background:rgba(0,0,0,.68);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center"><span style="font:800 11.5px Manrope,sans-serif;color:#fff">{{ r.eta }}</span></div>
+            <div style="height:28px;padding:0 11px;border-radius:14px;background:#19C08C;display:flex;align-items:center"><span style="font:800 11.5px Manrope,sans-serif;color:#00170F">{{ r.badge }}</span></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-top:11px">
+          <span style="flex:1;font:800 16.5px Manrope,sans-serif;letter-spacing:-.022em">{{ r.name }}</span>
+          <svg width="13" height="13" viewBox="0 0 12 12"><path d="M6 1 L7.5 4.4 L11 4.9 L8.5 7.4 L9.1 11 L6 9.3 L2.9 11 L3.5 7.4 L1 4.9 L4.5 4.4 Z" fill="#FFB020"></path></svg>
+          <span style="font:800 13px Manrope,sans-serif">{{ r.rating }}</span>
+        </div>
+        <div style="font:500 12.5px Manrope,sans-serif;color:#6E7673;margin-top:3px">{{ r.tagline }} · {{ r.dist }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_restaurant }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="position:relative">
+    <img src="{{ rest.photo }}" alt="{{ rest.name }}" style="width:100%;height:230px;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,#000 3%,rgba(0,0,0,.08) 55%,rgba(0,0,0,.42))"></div>
+    <div onClick="{{ back }}" style="position:absolute;top:52px;left:18px;width:40px;height:40px;border-radius:20px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+  </div>
+  <div style="padding:14px 18px 0">
+    <div style="font:800 27px/1.15 Manrope,sans-serif;letter-spacing:-.038em">{{ rest.name }}</div>
+    <div style="font:500 13px/1.5 Manrope,sans-serif;color:#8B928F;margin-top:6px">{{ rest.tagline }}</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+      <svg width="13" height="13" viewBox="0 0 12 12"><path d="M6 1 L7.5 4.4 L11 4.9 L8.5 7.4 L9.1 11 L6 9.3 L2.9 11 L3.5 7.4 L1 4.9 L4.5 4.4 Z" fill="#FFB020"></path></svg>
+      <span style="font:800 13px Manrope,sans-serif">{{ rest.rating }}</span>
+      <span style="font:600 12.5px Manrope,sans-serif;color:#6E7673">· {{ rest.eta }} · {{ rest.dist }}</span>
+    </div>
+  </div>
+  <div style="font:800 19px Manrope,sans-serif;letter-spacing:-.022em;margin:26px 18px 0">Món nổi bật</div>
+  <div style="margin:14px 18px 0;display:flex;flex-direction:column;gap:16px">
+    <sc-for list="{{ meals }}" as="m" hint-placeholder-count="4">
+      <div style="display:flex;gap:13px;align-items:flex-start">
+        <img src="{{ m.photo }}" alt="{{ m.name }}" style="width:92px;height:92px;border-radius:18px;object-fit:cover;flex:none">
+        <div style="flex:1;min-width:0">
+          <div style="font:800 15px Manrope,sans-serif">{{ m.name }}</div>
+          <div style="font:500 11.5px/1.45 Manrope,sans-serif;color:#6E7673;margin-top:3px">{{ m.desc }}</div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <div style="height:24px;padding:0 9px;border-radius:12px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center"><span style="font:800 10.5px Manrope,sans-serif;color:#A2AAA7">{{ m.kcal }} kcal</span></div>
+            <div style="height:24px;padding:0 9px;border-radius:12px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center"><span style="font:800 10.5px Manrope,sans-serif;color:#A2AAA7">{{ m.protein }}g đạm</span></div>
+          </div>
+        </div>
+        <div onClick="{{ m.add }}" style="width:38px;height:38px;border-radius:19px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;flex:none;cursor:pointer"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 4 V14 M4 9 H14" stroke="#000" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:120px"></div>
+  <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+  <div style="position:sticky;bottom:0;padding:14px 18px 28px;background:linear-gradient(to top,#000 55%,rgba(0,0,0,0))">
+    <div onClick="{{ go_cart }}" style="height:56px;border-radius:18px;background:#19C08C;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;animation:hv-rise .26s ease both">
+      <div style="min-width:24px;height:24px;padding:0 7px;border-radius:12px;background:rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center"><span style="font:800 12.5px Manrope,sans-serif;color:#00170F">{{ cartCount }}</span></div>
+      <span style="font:800 16px Manrope,sans-serif;color:#00170F">Xem giỏ hàng</span>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_cart }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Giỏ hàng</span>
+  </div>
+  <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ true }}">
+    <div style="margin:24px 18px 0;display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ cart }}" as="c" hint-placeholder-count="2">
+        <div style="display:flex;gap:13px;align-items:center">
+          <img src="{{ c.photo }}" alt="{{ c.name }}" style="width:64px;height:64px;border-radius:16px;object-fit:cover">
+          <div style="flex:1;min-width:0">
+            <div style="font:800 14.5px Manrope,sans-serif">{{ c.name }}</div>
+            <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ c.line }}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div onClick="{{ c.dec }}" style="width:32px;height:32px;border-radius:16px;border:1px solid #2A2F2C;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7 H11" stroke="#F5F7F6" stroke-width="2.3" stroke-linecap="round"></path></svg></div>
+            <span style="font:800 14px Manrope,sans-serif;min-width:14px;text-align:center">{{ c.qty }}</span>
+            <div onClick="{{ c.inc }}" style="width:32px;height:32px;border-radius:16px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 3 V11 M3 7 H11" stroke="#000" stroke-width="2.3" stroke-linecap="round"></path></svg></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin:26px 18px 0;padding:16px;background:#121413;border:1px solid #1F2321;border-radius:20px">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#6E7673">Tổng dinh dưỡng bữa này</div>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">{{ cartKcal }}</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">kcal</div></div>
+        <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">{{ cartProtein }}g</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">đạm</div></div>
+        <div style="flex:1"><div style="font:800 21px Manrope,sans-serif;font-variant-numeric:tabular-nums">{{ cartCount }}</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">món</div></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin:12px 18px 0;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:18px">
+      <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#19C08C"></circle><path d="M12 7 V12 L15.6 14.2" fill="none" stroke="#04140F" stroke-width="2.2" stroke-linecap="round"></path></svg>
+      <div style="flex:1"><div style="font:800 13px Manrope,sans-serif">Giao trong 25–40 phút</div><div style="font:500 11px Manrope,sans-serif;color:#6E7673;margin-top:1px">{{ address }}</div></div>
+    </div>
+    <div style="height:110px"></div>
+    <div style="position:sticky;bottom:0;padding:14px 18px 28px;background:linear-gradient(to top,#000 55%,rgba(0,0,0,0))">
+      <div onClick="{{ placeOrder }}" style="height:56px;border-radius:18px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 16px Manrope,sans-serif;color:#00170F">Đặt món và ghi vào nhật ký</span></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ emptyCart }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 40px;text-align:center">
+      <svg width="58" height="58" viewBox="0 0 24 24"><path d="M3.5 5 h2.8 a1 1 0 0 1 1 .8 L9.4 16.6 a1.6 1.6 0 0 0 1.6 1.3 h6.6 a1.6 1.6 0 0 0 1.55-1.2 L21 8.6 H8" fill="none" stroke="#2A2F2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="font:800 19px Manrope,sans-serif;margin-top:18px">Giỏ hàng đang trống</div>
+      <div style="font:500 12.5px/1.5 Manrope,sans-serif;color:#6E7673;margin-top:7px">Chọn món từ các quán ăn lành mạnh gần bạn</div>
+      <div onClick="{{ go_food }}" style="height:48px;padding:0 22px;border-radius:16px;background:#F5F7F6;display:flex;align-items:center;margin-top:22px;cursor:pointer"><span style="font:800 14px Manrope,sans-serif;color:#000">Xem quán ăn</span></div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_placed }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 32px;text-align:center;animation:hv-rise .3s ease both">
+  <svg width="74" height="74" viewBox="0 0 72 72"><circle cx="36" cy="36" r="34" fill="#0C1A15" stroke="#19C08C" stroke-width="2"></circle><path d="M22 37 L32 47 L50 26" fill="none" stroke="#19C08C" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 3s ease-in-out infinite"></path></svg>
+  <div style="font:800 26px/1.2 Manrope,sans-serif;letter-spacing:-.038em;margin-top:20px">Đã đặt món</div>
+  <div style="font:500 13.5px/1.6 Manrope,sans-serif;color:#8B928F;margin-top:8px">{{ placedLine }}</div>
+  <div onClick="{{ go_activity }}" style="height:54px;padding:0 26px;border-radius:17px;background:#F5F7F6;display:flex;align-items:center;margin-top:26px;cursor:pointer"><span style="font:800 15px Manrope,sans-serif;color:#000">Xem trong Hoạt động</span></div>
+  <div onClick="{{ go_home }}" style="font:700 13px Manrope,sans-serif;color:#6E7673;margin-top:16px;cursor:pointer">Về trang chủ</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_meds }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="flex:1;font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Lời nhắc thuốc</span>
+    <div style="width:40px;height:40px;border-radius:20px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 4 V14 M4 9 H14" stroke="#000" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="margin:24px 18px 0;padding:20px;background:#121413;border:1px solid #1F2321;border-radius:22px;display:flex;align-items:center;gap:18px">
+    <svg width="82" height="82" viewBox="0 0 80 80" style="flex:none">
+      <circle cx="40" cy="40" r="32" fill="none" stroke="#232827" stroke-width="9"></circle>
+      <circle cx="40" cy="40" r="32" fill="none" stroke="#19C08C" stroke-width="9" stroke-linecap="round" stroke-dasharray="{{ adherenceDash }}" transform="rotate(-90 40 40)"></circle>
+    </svg>
+    <div style="flex:1;min-width:0">
+      <div style="font:800 26px Manrope,sans-serif;letter-spacing:-.03em">{{ dosesLabel }}</div>
+      <div style="font:500 12.5px/1.5 Manrope,sans-serif;color:#8B928F;margin-top:4px">liều đã uống hôm nay. {{ nextDoseLine }}</div>
+    </div>
+  </div>
+  <div style="font:800 15px Manrope,sans-serif;margin:26px 18px 0">Hôm nay</div>
+  <div style="margin:12px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ doses }}" as="d" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:13px;padding:13px;background:#121413;border:1px solid #1F2321;border-radius:18px">
+        <svg width="36" height="36" viewBox="0 0 48 48" style="flex:none"><rect x="13" y="8" width="22" height="15" rx="7.5" fill="#FFB020" data-a style="animation:hv-shake 4s ease-in-out infinite"></rect><path d="M11 26 h26 l-3 14 a3 3 0 0 1-3 2.6 H17 a3 3 0 0 1-3-2.6 Z" fill="#E09000"></path><circle cx="24" cy="15.5" r="3.4" fill="#04140F"></circle></svg>
+        <div style="flex:1;min-width:0">
+          <div style="font:800 14.5px Manrope,sans-serif">{{ d.name }}</div>
+          <div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:2px">{{ d.time }} · {{ d.dose }}</div>
+        </div>
+        <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ false }}"><div onClick="{{ d.take }}" style="height:36px;padding:0 14px;border-radius:18px;background:#F5F7F6;display:flex;align-items:center;cursor:pointer;flex:none"><span style="font:800 12.5px Manrope,sans-serif;color:#000">Đã uống</span></div></sc-if>
+        <sc-if value="{{ d.taken }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="10" fill="#19C08C"></circle><path d="M7.5 12.4 L10.6 15.4 L16.5 9" fill="none" stroke="#04140F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_activity }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="padding:52px 18px 0"><div style="font:800 28px Manrope,sans-serif;letter-spacing:-.038em">Hoạt động</div></div>
+  <div style="display:flex;gap:8px;margin:18px 18px 0">
+    <sc-for list="{{ actTabs }}" as="t" hint-placeholder-count="3">
+      <div onClick="{{ t.pick }}" style="flex:1;cursor:pointer">
+        <sc-if value="{{ t.on }}" hint-placeholder-val="{{ true }}"><div style="height:40px;border-radius:20px;background:#F5F7F6;display:flex;align-items:center;justify-content:center"><span style="font:800 12.5px Manrope,sans-serif;color:#000">{{ t.label }}</span></div></sc-if>
+        <sc-if value="{{ t.off }}" hint-placeholder-val="{{ false }}"><div style="height:40px;border-radius:20px;border:1px solid #232827;display:flex;align-items:center;justify-content:center"><span style="font:700 12.5px Manrope,sans-serif;color:#A2AAA7">{{ t.label }}</span></div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin:22px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ activityRows }}" as="r" hint-placeholder-count="3">
+      <div style="display:flex;align-items:center;gap:13px;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:18px">
+        <div style="width:46px;height:46px;border-radius:15px;background:#0B0D0C;display:flex;align-items:center;justify-content:center;flex:none">
+          <sc-if value="{{ r.kCare }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 48 48"><path d="M9 25 L24 12.5 L39 25 V38 a2.5 2.5 0 0 1-2.5 2.5 H11.5 A2.5 2.5 0 0 1 9 38 Z" fill="#19C08C"></path><path d="M24 12.5 L39 25 H9 Z" fill="#0F9E73"></path><g data-a style="animation:hv-beat 2.2s ease-in-out infinite"><rect x="21.5" y="27" width="5" height="10" rx="1.6" fill="#04140F"></rect><rect x="19" y="29.5" width="10" height="5" rx="1.6" fill="#04140F"></rect></g></svg></sc-if>
+          <sc-if value="{{ r.kFood }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 48 48"><path d="M9 22 h30 c0 9-6.7 16-15 16 s-15-7-15-16 Z" fill="#FFB020"></path><path d="M9 22 h30" stroke="#E09000" stroke-width="3" stroke-linecap="round"></path><path d="M18 16 c0-3 2-4 2-6" stroke="#E09000" stroke-width="2.6" stroke-linecap="round" data-a style="animation:hv-steam 2.4s ease-out infinite"></path><path d="M28 16 c0-3 2-4 2-6" stroke="#E09000" stroke-width="2.6" stroke-linecap="round" data-a style="animation:hv-steam 2.4s ease-out .6s infinite"></path></svg></sc-if>
+          <sc-if value="{{ r.kFit }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 48 48"><rect x="10" y="18" width="7" height="12" rx="3.5" fill="#22D3EE" data-a style="animation:hv-bar 1.5s ease-in-out infinite"></rect><rect x="20" y="12" width="7" height="24" rx="3.5" fill="#22D3EE" data-a style="animation:hv-bar 1.5s ease-in-out .2s infinite"></rect><rect x="30" y="16" width="7" height="18" rx="3.5" fill="#0EA5C4" data-a style="animation:hv-bar 1.5s ease-in-out .4s infinite"></rect></svg></sc-if>
+          <sc-if value="{{ r.kMed }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 48 48"><rect x="13" y="8" width="22" height="15" rx="7.5" fill="#FFB020" data-a style="animation:hv-shake 4s ease-in-out infinite"></rect><path d="M11 26 h26 l-3 14 a3 3 0 0 1-3 2.6 H17 a3 3 0 0 1-3-2.6 Z" fill="#E09000"></path></svg></sc-if>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font:800 14.5px Manrope,sans-serif">{{ r.title }}</div>
+          <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ r.meta }}</div>
+        </div>
+        <div style="height:26px;padding:0 10px;border-radius:13px;background:#0C1A15;border:1px solid #19C08C;display:flex;align-items:center;flex:none"><span style="font:800 10.5px Manrope,sans-serif;color:#19C08C">{{ r.status }}</span></div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_account }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:52px 18px 0;display:flex;align-items:center;gap:14px">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="Minh Anh" style="width:64px;height:64px;border-radius:22px;object-fit:cover">
+      <div style="flex:1;min-width:0">
+        <div style="font:800 21px Manrope,sans-serif;letter-spacing:-.03em">Trần Minh Anh</div>
+        <div style="font:500 12.5px Manrope,sans-serif;color:#8B928F;margin-top:3px">0901 234 567 · Quận 3, TP.HCM</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin:20px 18px 0">
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 19px Manrope,sans-serif">4</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">thành viên</div></div>
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 19px Manrope,sans-serif">12</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">buổi khám</div></div>
+      <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 19px Manrope,sans-serif">86%</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">tuân thủ thuốc</div></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ guest }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:52px 18px 0">
+      <div style="font:800 28px Manrope,sans-serif;letter-spacing:-.038em">Tài khoản</div>
+      <div style="margin-top:20px;padding:20px;background:#0C1A15;border:1px solid #19C08C;border-radius:22px;text-align:center">
+        <svg width="72" height="72" viewBox="0 0 64 64" style="margin:0 auto">
+          <circle cx="30" cy="24" r="8.4" fill="none" stroke="#19C08C" stroke-width="2.6" stroke-dasharray="4 4" data-a style="animation:hv-spin 9s linear infinite"></circle>
+          <path d="M15 52 c0-8.4 6.7-13.6 15-13.6 s15 5.2 15 13.6" fill="none" stroke="#19C08C" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="4 4.6"></path>
+          <g data-a style="animation:hv-float 2.6s ease-in-out infinite"><circle cx="48" cy="18" r="8" fill="none" stroke="#FFB020" stroke-width="2.8"></circle><path d="M54 24 L59 29" stroke="#FFB020" stroke-width="3" stroke-linecap="round"></path></g>
+        </svg>
+        <div style="font:800 19px Manrope,sans-serif;margin-top:14px">Bạn đang xem với tư cách khách</div>
+        <div style="font:500 12.5px/1.55 Manrope,sans-serif;color:#7FD9BE;margin-top:8px">Đăng nhập để đặt lịch chăm sóc, đặt món, lưu đơn thuốc và hồ sơ cả gia đình.</div>
+        <div onClick="{{ signInFromGate }}" style="height:52px;margin-top:18px;border-radius:17px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 15px Manrope,sans-serif;color:#00170F">Đăng nhập / Đăng ký</span></div>
+      </div>
+    </div>
+  </sc-if>
+  <div style="margin:22px 18px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ accountRows }}" as="a" hint-placeholder-count="6">
+      <div onClick="{{ a.open }}" style="display:flex;align-items:center;gap:13px;padding:15px 0;cursor:pointer">
+        <div style="width:38px;height:38px;border-radius:12px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;flex:none">
+          <div style="width:16px;height:16px;border-radius:5px;background:{{ a.tint }}"></div>
+        </div>
+        <span style="flex:1;font:700 14.5px Manrope,sans-serif">{{ a.label }}</span>
+        <span style="font:600 12px Manrope,sans-serif;color:#6E7673">{{ a.value }}</span>
+        <svg width="15" height="15" viewBox="0 0 16 16" style="flex:none"><path d="M5.5 3 L11 8 L5.5 13" fill="none" stroke="#5E6663" stroke-width="2" stroke-linecap="round"></path></svg>
+      </div>
+    </sc-for>
+  </div>
+  <div onClick="{{ enterProvider }}" style="margin:22px 18px 0;height:52px;border-radius:17px;border:1.5px solid #2A2F2C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 14px Manrope,sans-serif;color:#F5F7F6">Chuyển sang chế độ chuyên gia</span></div>
+  <div onClick="{{ signOut }}" style="margin:10px 18px 0;height:52px;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 14px Manrope,sans-serif;color:#6E7673">Đăng xuất</span></div>
+  <div style="height:26px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_family }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="flex:1;font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Gia đình</span>
+    <div style="width:40px;height:40px;border-radius:20px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 4 V14 M4 9 H14" stroke="#000" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="margin:22px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ family }}" as="m" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:13px;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:18px">
+        <img src="{{ m.photo }}" alt="{{ m.name }}" style="width:50px;height:50px;border-radius:17px;object-fit:cover">
+        <div style="flex:1;min-width:0">
+          <div style="font:800 15px Manrope,sans-serif">{{ m.name }}</div>
+          <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ m.rel }} · {{ m.detail }}</div>
+        </div>
+        <div onClick="{{ m.book }}" style="height:34px;padding:0 13px;border-radius:17px;background:#0C1A15;border:1px solid #19C08C;display:flex;align-items:center;cursor:pointer;flex:none"><span style="font:800 11.5px Manrope,sans-serif;color:#19C08C">Đặt khám</span></div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_chat }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Tin nhắn</span>
+  </div>
+  <div style="margin:20px 18px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ threads }}" as="t" hint-placeholder-count="3">
+      <div onClick="{{ t.open }}" style="display:flex;align-items:center;gap:13px;padding:14px 0;cursor:pointer">
+        <img src="{{ t.photo }}" alt="{{ t.name }}" style="width:50px;height:50px;border-radius:17px;object-fit:cover">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="flex:1;font:800 14.5px Manrope,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.name }}</span><span style="font:600 11px Manrope,sans-serif;color:#6E7673;flex:none">{{ t.time }}</span></div>
+          <div style="font:500 12.5px Manrope,sans-serif;color:#8B928F;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.last }}</div>
+        </div>
+        <sc-if value="{{ t.unread }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:11px;background:#19C08C;display:flex;align-items:center;justify-content:center;flex:none"><span style="font:800 10.5px Manrope,sans-serif;color:#00170F">{{ t.count }}</span></div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_convo }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 16px;border-bottom:1px solid #1F2321">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="{{ careProName }}" style="width:40px;height:40px;border-radius:14px;object-fit:cover">
+    <div style="flex:1;min-width:0">
+      <div style="font:800 14.5px Manrope,sans-serif">{{ careProName }}</div>
+      <div style="display:flex;align-items:center;gap:5px;margin-top:2px"><div style="width:6px;height:6px;border-radius:3px;background:#19C08C;animation:hv-blink 1.6s ease-in-out infinite"></div><span style="font:600 11px Manrope,sans-serif;color:#8B928F">Đang hoạt động</span></div>
+    </div>
+  </div>
+  <div style="flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ messages }}" as="m" hint-placeholder-count="4">
+      <div>
+        <sc-if value="{{ m.mine }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:flex-end"><div style="max-width:76%;background:#19C08C;border-radius:18px 18px 6px 18px;padding:11px 14px"><div style="font:500 13.5px/1.5 Manrope,sans-serif;color:#00170F">{{ m.text }}</div></div></div>
+        </sc-if>
+        <sc-if value="{{ m.theirs }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex"><div style="max-width:76%;background:#121413;border:1px solid #1F2321;border-radius:18px 18px 18px 6px;padding:11px 14px"><div style="font:500 13.5px/1.5 Manrope,sans-serif;color:#E4E8E6">{{ m.text }}</div></div></div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="padding:12px 18px 28px;display:flex;gap:9px;align-items:center;border-top:1px solid #1F2321">
+    <div style="flex:1;height:48px;border-radius:24px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;padding:0 16px"><span style="font:500 14px Manrope,sans-serif;color:#5E6663">{{ composerText }}</span></div>
+    <div onClick="{{ sendMsg }}" style="width:48px;height:48px;border-radius:24px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 12 L20 4 L14.5 20 L12 13.5 Z" fill="#00170F"></path></svg></div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_fitness }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Vận động</span>
+  </div>
+  <div style="margin:20px 18px 0;padding:20px;background:#0A1A1E;border:1px solid #123840;border-radius:22px">
+    <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#22D3EE">Tuần này</div>
+    <div style="display:flex;align-items:flex-end;gap:9px;margin-top:16px;height:92px">
+      <sc-for list="{{ weekBars }}" as="b" hint-placeholder-count="7">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:flex-end">
+          <div style="width:100%;height:{{ b.h }};border-radius:6px;background:{{ b.color }}"></div>
+          <span style="font:700 10px Manrope,sans-serif;color:#5E7A80">{{ b.day }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:14px;margin-top:18px;padding-top:16px;border-top:1px solid #123840">
+      <div style="flex:1"><div style="font:800 20px Manrope,sans-serif">4</div><div style="font:600 10.5px Manrope,sans-serif;color:#5E7A80;margin-top:2px">buổi tập</div></div>
+      <div style="flex:1"><div style="font:800 20px Manrope,sans-serif">168</div><div style="font:600 10.5px Manrope,sans-serif;color:#5E7A80;margin-top:2px">phút</div></div>
+      <div style="flex:1"><div style="font:800 20px Manrope,sans-serif">1.240</div><div style="font:600 10.5px Manrope,sans-serif;color:#5E7A80;margin-top:2px">kcal</div></div>
+    </div>
+  </div>
+  <div style="font:800 15px Manrope,sans-serif;margin:26px 18px 0">Bài tập của bạn</div>
+  <div style="margin:12px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ routines }}" as="r" hint-placeholder-count="3">
+      <div onClick="{{ r.start }}" style="display:flex;align-items:center;gap:13px;padding:13px;background:#121413;border:1px solid #1F2321;border-radius:18px;cursor:pointer">
+        <img src="{{ r.photo }}" alt="{{ r.name }}" style="width:56px;height:56px;border-radius:16px;object-fit:cover">
+        <div style="flex:1;min-width:0">
+          <div style="font:800 14.5px Manrope,sans-serif">{{ r.name }}</div>
+          <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ r.meta }}</div>
+        </div>
+        <div style="width:38px;height:38px;border-radius:19px;background:#22D3EE;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M5 3 L13 8 L5 13 Z" fill="#00171C"></path></svg></div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_pHome }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <img src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces" alt="BS. Nguyễn Thu Hà" style="width:44px;height:44px;border-radius:15px;object-fit:cover">
+    <div style="flex:1;min-width:0">
+      <div style="font:800 9.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E7673">Chế độ chuyên gia</div>
+      <div style="font:800 15px Manrope,sans-serif;margin-top:3px">BS. Nguyễn Thu Hà</div>
+    </div>
+    <div onClick="{{ toggleOnline }}" style="cursor:pointer;flex:none">
+      <sc-if value="{{ online }}" hint-placeholder-val="{{ true }}"><div style="height:38px;padding:0 6px 0 13px;border-radius:19px;background:#0C1A15;border:1px solid #19C08C;display:flex;align-items:center;gap:9px"><span style="font:800 12px Manrope,sans-serif;color:#19C08C">Đang mở</span><div style="width:26px;height:26px;border-radius:13px;background:#19C08C"></div></div></sc-if>
+      <sc-if value="{{ offline }}" hint-placeholder-val="{{ false }}"><div style="height:38px;padding:0 13px 0 6px;border-radius:19px;border:1px solid #2A2F2C;display:flex;align-items:center;gap:9px"><div style="width:26px;height:26px;border-radius:13px;background:#2A2F2C"></div><span style="font:800 12px Manrope,sans-serif;color:#8B928F">Đã nghỉ</span></div></sc-if>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;margin:22px 18px 0">
+    <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 20px Manrope,sans-serif">{{ pVisitsToday }}</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">ca hôm nay</div></div>
+    <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 20px Manrope,sans-serif">{{ openTasks }}</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">việc cần làm</div></div>
+    <div style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:16px;padding:13px"><div style="font:800 20px Manrope,sans-serif">4,9</div><div style="font:600 10.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">đánh giá</div></div>
+  </div>
+
+  <sc-if value="{{ online }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin:28px 18px 0">
+    <span style="font:800 18px Manrope,sans-serif;letter-spacing:-.025em">Yêu cầu mới quanh bạn</span>
+    <span style="font:700 11.5px Manrope,sans-serif;color:#6E7673">Đã ẩn danh</span>
+  </div>
+  <div style="margin:12px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="2">
+      <div style="padding:15px;background:#121413;border:1px solid #1F2321;border-radius:20px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="height:24px;padding:0 9px;border-radius:12px;background:#0C1A15;border:1px solid #19C08C;display:flex;align-items:center;flex:none"><span style="font:800 10px Manrope,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#19C08C">{{ j.urgency }}</span></div>
+          <span style="font:700 11.5px Manrope,sans-serif;color:#8B928F">{{ j.dist }} · {{ j.time }}</span>
+        </div>
+        <div style="font:800 16px Manrope,sans-serif;margin-top:10px">{{ j.service }}</div>
+        <div style="font:500 12px/1.5 Manrope,sans-serif;color:#8B928F;margin-top:4px">{{ j.note }}</div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <div onClick="{{ j.decline }}" style="flex:1;height:44px;border-radius:14px;border:1px solid #2A2F2C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 13px Manrope,sans-serif;color:#A2AAA7">Bỏ qua</span></div>
+          <div onClick="{{ j.accept }}" style="flex:1.4;height:44px;border-radius:14px;background:#19C08C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 13px Manrope,sans-serif;color:#00170F">Nhận ca</span></div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  </sc-if>
+  <sc-if value="{{ offline }}" hint-placeholder-val="{{ false }}">
+  <div style="margin:28px 18px 0;padding:24px 18px;background:#121413;border:1px dashed #2E3835;border-radius:22px;text-align:center">
+    <div style="font:800 16px Manrope,sans-serif">Bạn đang tắt nhận ca</div>
+    <div style="font:500 12.5px/1.55 Manrope,sans-serif;color:#6E7673;margin-top:6px">Bật "Đang mở" để nhận yêu cầu mới quanh Quận 3.</div>
+  </div>
+  </sc-if>
+
+  <div style="display:flex;gap:10px;margin:26px 18px 0">
+    <div onClick="{{ go_pSchedule }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="44" height="44" viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="28" rx="6" fill="#4A9EFF"></rect><rect x="8" y="12" width="32" height="9" rx="4" fill="#2B7FE0"></rect><rect x="14" y="7" width="4" height="8" rx="2" fill="#F5F7F6"></rect><rect x="30" y="7" width="4" height="8" rx="2" fill="#F5F7F6"></rect><rect x="14" y="26" width="8" height="8" rx="2.5" fill="#0A1526" data-a style="animation:hv-blink 2.4s ease-in-out infinite"></rect><rect x="26" y="26" width="8" height="8" rx="2.5" fill="#0A1526" opacity=".4"></rect></svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Lịch làm việc</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">3 ca đã đặt</div>
+    </div>
+    <div onClick="{{ go_pTasks }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="44" height="44" viewBox="0 0 48 48"><rect x="10" y="8" width="28" height="34" rx="6" fill="#19C08C"></rect><path d="M17 19 l3.4 3.4 L28 15" fill="none" stroke="#04140F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="70" style="animation:hv-draw 3.2s ease-in-out infinite"></path><path d="M17 30 H31 M17 36 H26" stroke="#04140F" stroke-width="2.8" stroke-linecap="round" opacity=".5"></path></svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Việc cần làm</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ taskProgress }} hoàn thành</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;margin:10px 18px 0">
+    <div onClick="{{ go_pNotes }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="44" height="44" viewBox="0 0 48 48"><rect x="9" y="9" width="26" height="32" rx="5" fill="#A78BFA"></rect><path d="M15 18 H29 M15 25 H29 M15 32 H24" stroke="#3B1E8F" stroke-width="2.4" stroke-linecap="round"></path><g data-a style="transform-origin:32.5px 40px;animation:hv-nod 3s ease-in-out infinite"><rect x="30" y="12" width="5" height="24" rx="2.5" fill="#FFB020"></rect><path d="M30 36 L32.5 41 L35 36 Z" fill="#F5F7F6"></path></g></svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Ghi chú</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">3 ghi chú</div>
+    </div>
+    <div onClick="{{ go_pHours }}" style="flex:1;background:#121413;border:1px solid #1F2321;border-radius:20px;padding:14px;cursor:pointer">
+      <svg width="44" height="44" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="#FFB020"></circle><circle cx="24" cy="24" r="16" fill="none" stroke="#E09000" stroke-width="2.4"></circle><path d="M24 14 V24 L31 28" fill="none" stroke="#04140F" stroke-width="3" stroke-linecap="round" data-a style="transform-origin:24px 24px;animation:hv-spin 7s linear infinite"></path></svg>
+      <div style="font:800 14.5px Manrope,sans-serif;margin-top:10px">Giờ rảnh</div>
+      <div style="font:500 11.5px Manrope,sans-serif;color:#6E7673;margin-top:2px">T2–T7 · 08–18</div>
+    </div>
+  </div>
+  <div onClick="{{ enterCustomer }}" style="margin:24px 18px 0;height:52px;border-radius:17px;border:1.5px solid #2A2F2C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 14px Manrope,sans-serif;color:#F5F7F6">Về chế độ khách hàng</span></div>
+  <div style="height:28px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_pSchedule }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Lịch làm việc</span>
+  </div>
+  <div style="display:flex;gap:7px;margin:20px 18px 0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none">
+    <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+      <div onClick="{{ d.pick }}" style="flex:none;width:50px;cursor:pointer">
+        <sc-if value="{{ d.on }}" hint-placeholder-val="{{ false }}"><div style="background:#F5F7F6;border-radius:16px;padding:11px 0;text-align:center"><div style="font:700 10.5px Manrope,sans-serif;color:#5E6663">{{ d.dow }}</div><div style="font:800 17px Manrope,sans-serif;color:#000;margin-top:3px">{{ d.num }}</div></div></sc-if>
+        <sc-if value="{{ d.off }}" hint-placeholder-val="{{ true }}"><div style="border:1px solid #232827;border-radius:16px;padding:11px 0;text-align:center"><div style="font:700 10.5px Manrope,sans-serif;color:#6E7673">{{ d.dow }}</div><div style="font:800 17px Manrope,sans-serif;color:#E4E8E6;margin-top:3px">{{ d.num }}</div></div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin:24px 18px 0">
+    <sc-for list="{{ slots }}" as="s" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start">
+        <div style="font:800 12.5px Manrope,sans-serif;color:#6E7673;padding-top:16px;font-variant-numeric:tabular-nums">{{ s.time }}</div>
+        <div style="padding-bottom:12px">
+          <sc-if value="{{ s.booked }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ s.open }}" style="padding:14px;background:#0C1A15;border:1px solid #19C08C;border-radius:16px;cursor:pointer">
+              <div style="display:flex;align-items:center;gap:10px">
+                <img src="{{ s.photo }}" alt="{{ s.patient }}" style="width:38px;height:38px;border-radius:12px;object-fit:cover">
+                <div style="flex:1;min-width:0"><div style="font:800 14px Manrope,sans-serif">{{ s.patient }}</div><div style="font:500 11.5px Manrope,sans-serif;color:#7FD9BE;margin-top:2px">{{ s.service }}</div></div>
+              </div>
+              <div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:10px">{{ s.addr }}</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.free }}" hint-placeholder-val="{{ false }}">
+            <div style="height:58px;border:1px dashed #2A2F2C;border-radius:16px;display:flex;align-items:center;padding:0 14px"><span style="font:600 12.5px Manrope,sans-serif;color:#5E6663">Đang trống · nhận ca mới</span></div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_pTasks }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="flex:1;font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Việc cần làm</span>
+    <div style="width:40px;height:40px;border-radius:20px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 4 V14 M4 9 H14" stroke="#000" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="margin:20px 18px 0;padding:16px;background:#121413;border:1px solid #1F2321;border-radius:20px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:800 13px Manrope,sans-serif">Tiến độ hôm nay</span><span style="font:800 13px Manrope,sans-serif;color:#19C08C">{{ taskProgress }}</span></div>
+    <div style="height:6px;border-radius:3px;background:#232827;margin-top:12px;overflow:hidden"><div style="height:6px;border-radius:3px;background:#19C08C;width:{{ taskPct }}"></div></div>
+  </div>
+  <div style="margin:18px 18px 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ tasks }}" as="t" hint-placeholder-count="5">
+      <div onClick="{{ t.toggle }}" style="display:flex;align-items:center;gap:13px;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:18px;cursor:pointer">
+        <sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}">
+          <svg width="26" height="26" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#19C08C"></circle><path d="M7 12.4 L10.4 15.8 L17 8.8" fill="none" stroke="#04140F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <div style="flex:1;min-width:0"><div style="font:700 14px Manrope,sans-serif;color:#5E6663;text-decoration:line-through">{{ t.title }}</div><div style="font:500 11.5px Manrope,sans-serif;color:#4E5451;margin-top:2px">{{ t.meta }}</div></div>
+        </sc-if>
+        <sc-if value="{{ t.open }}" hint-placeholder-val="{{ true }}">
+          <div style="width:26px;height:26px;border-radius:13px;border:2px solid #3A403D;flex:none"></div>
+          <div style="flex:1;min-width:0"><div style="font:800 14px Manrope,sans-serif">{{ t.title }}</div><div style="font:500 11.5px Manrope,sans-serif;color:#8B928F;margin-top:2px">{{ t.meta }}</div></div>
+          <div style="height:24px;padding:0 9px;border-radius:12px;background:{{ t.tintBg }};display:flex;align-items:center;flex:none"><span style="font:800 10px Manrope,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:{{ t.tintFg }}">{{ t.priority }}</span></div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_pNotes }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="flex:1;font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Ghi chú chuyên môn</span>
+    <div style="width:40px;height:40px;border-radius:20px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 4 V14 M4 9 H14" stroke="#000" stroke-width="2.4" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="margin:20px 18px 0;display:flex;flex-direction:column;gap:11px">
+    <sc-for list="{{ notes }}" as="n" hint-placeholder-count="3">
+      <div style="padding:16px;background:#121413;border:1px solid #1F2321;border-radius:20px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="height:24px;padding:0 9px;border-radius:12px;background:#1A1230;display:flex;align-items:center;flex:none"><span style="font:800 10px Manrope,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#A78BFA">{{ n.tag }}</span></div>
+          <span style="font:700 11.5px Manrope,sans-serif;color:#6E7673">{{ n.when }}</span>
+        </div>
+        <div style="font:800 15px Manrope,sans-serif;margin-top:11px">{{ n.title }}</div>
+        <div style="font:500 12.5px/1.6 Manrope,sans-serif;color:#8B928F;margin-top:6px">{{ n.body }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ is_pHours }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;animation:hv-rise .3s ease both">
+  <div style="display:flex;align-items:center;gap:12px;padding:52px 18px 0">
+    <div onClick="{{ back }}" style="width:40px;height:40px;border-radius:20px;background:#121413;border:1px solid #1F2321;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="17" height="17" viewBox="0 0 16 16"><path d="M10 3 L4.5 8 L10 13" fill="none" stroke="#F5F7F6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    <span style="font:800 20px Manrope,sans-serif;letter-spacing:-.028em">Giờ rảnh của bạn</span>
+  </div>
+  <div style="font:500 13px/1.55 Manrope,sans-serif;color:#8B928F;margin:14px 18px 0">Chạm để mở hoặc tắt nhận ca theo từng ngày. Haven chỉ gửi yêu cầu trong khung giờ bạn đang mở.</div>
+  <div style="margin:20px 18px 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+      <div onClick="{{ h.toggle }}" style="display:flex;align-items:center;gap:13px;padding:14px;background:#121413;border:1px solid #1F2321;border-radius:18px;cursor:pointer">
+        <div style="width:44px;font:800 13.5px Manrope,sans-serif;flex:none">{{ h.day }}</div>
+        <div style="flex:1;min-width:0">
+          <sc-if value="{{ h.on }}" hint-placeholder-val="{{ true }}"><div style="font:800 14px Manrope,sans-serif;color:#19C08C">{{ h.range }}</div><div style="font:500 11px Manrope,sans-serif;color:#6E7673;margin-top:2px">{{ h.cap }}</div></sc-if>
+          <sc-if value="{{ h.off }}" hint-placeholder-val="{{ false }}"><div style="font:700 14px Manrope,sans-serif;color:#5E6663">Nghỉ cả ngày</div></sc-if>
+        </div>
+        <div style="flex:none">
+          <sc-if value="{{ h.on }}" hint-placeholder-val="{{ true }}"><div style="width:48px;height:28px;border-radius:14px;background:#19C08C;display:flex;align-items:center;justify-content:flex-end;padding:0 3px"><div style="width:22px;height:22px;border-radius:11px;background:#04140F"></div></div></sc-if>
+          <sc-if value="{{ h.off }}" hint-placeholder-val="{{ false }}"><div style="width:48px;height:28px;border-radius:14px;background:#232827;display:flex;align-items:center;padding:0 3px"><div style="width:22px;height:22px;border-radius:11px;background:#5E6663"></div></div></sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="height:30px"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ showTabs }}" hint-placeholder-val="{{ false }}">
+<div style="position:sticky;bottom:0;margin-top:auto;padding:10px 14px 24px;background:linear-gradient(to top,#000 62%,rgba(0,0,0,0))">
+  <div style="display:flex;background:#0E100F;border:1px solid #1F2321;border-radius:24px;padding:9px 4px">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+      <div onClick="{{ t.go }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer">
+        <sc-if value="{{ t.tHome }}" hint-placeholder-val="{{ false }}"><svg width="21" height="21" viewBox="0 0 24 24"><path d="M4 12 L12 5.5 L20 12 V19 a1.5 1.5 0 0 1-1.5 1.5 H5.5 A1.5 1.5 0 0 1 4 19 Z" fill="{{ t.color }}"></path></svg></sc-if>
+        <sc-if value="{{ t.tSvc }}" hint-placeholder-val="{{ false }}"><svg width="21" height="21" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2.4" fill="{{ t.color }}"></rect><rect x="13" y="3.5" width="7.5" height="7.5" rx="2.4" fill="{{ t.color }}"></rect><rect x="3.5" y="13" width="7.5" height="7.5" rx="2.4" fill="{{ t.color }}"></rect><rect x="13" y="13" width="7.5" height="7.5" rx="2.4" fill="{{ t.color }}"></rect></svg></sc-if>
+        <sc-if value="{{ t.tAct }}" hint-placeholder-val="{{ false }}"><svg width="21" height="21" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3.4" fill="{{ t.color }}"></rect><path d="M8 9 H16 M8 13 H16 M8 17 H13" stroke="#000" stroke-width="1.9" stroke-linecap="round"></path></svg></sc-if>
+        <sc-if value="{{ t.tAcc }}" hint-placeholder-val="{{ false }}"><svg width="21" height="21" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2" fill="{{ t.color }}"></circle><path d="M4.5 21 c0-4.2 3.4-7 7.5-7 s7.5 2.8 7.5 7 z" fill="{{ t.color }}"></path></svg></sc-if>
+        <span style="font:800 10.5px Manrope,sans-serif;color:{{ t.color }}">{{ t.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:rgba(0,0,0,.66);display:flex;align-items:flex-end;z-index:50">
+  <div onClick="{{ closeGate }}" style="position:absolute;inset:0;cursor:pointer"></div>
+  <div style="position:relative;width:100%;background:#0E100F;border-top:1px solid #1F2321;border-radius:26px 26px 0 0;padding:22px 20px 30px;animation:hv-slide .32s cubic-bezier(.2,.8,.2,1) both">
+    <div style="width:38px;height:4px;border-radius:2px;background:#2A2F2C;margin:0 auto 20px"></div>
+    <svg width="54" height="54" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#0C1A15"></circle><path d="M24 13 a5 5 0 0 1 5 5 v3 h1.6 a2 2 0 0 1 2 2 v8.4 a2 2 0 0 1-2 2 H17.4 a2 2 0 0 1-2-2 V23 a2 2 0 0 1 2-2 H19 v-3 a5 5 0 0 1 5-5 Z m0 3.4 a1.6 1.6 0 0 0-1.6 1.6 v3 h3.2 v-3 A1.6 1.6 0 0 0 24 16.4 Z" fill="#19C08C"></path><circle cx="24" cy="27" r="2.4" fill="#04140F" data-a style="animation:hv-pulse 2s ease-in-out infinite"></circle></svg>
+    <div style="font:800 23px/1.22 Manrope,sans-serif;letter-spacing:-.035em;margin-top:16px;text-wrap:pretty">{{ gateTitle }}</div>
+    <div style="font:500 13.5px/1.6 Manrope,sans-serif;color:#8B928F;margin-top:8px">Haven cần biết bạn là ai để gửi chuyên gia đến đúng địa chỉ, lưu đơn thuốc và hồ sơ sức khoẻ gia đình.</div>
+    <div onClick="{{ signInFromGate }}" style="height:54px;margin-top:22px;border-radius:17px;background:#F5F7F6;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 15.5px Manrope,sans-serif;color:#000">Đăng nhập / Đăng ký</span></div>
+    <div onClick="{{ closeGate }}" style="height:52px;margin-top:10px;border-radius:17px;border:1px solid #2A2F2C;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="font:800 14.5px Manrope,sans-serif;color:#A2AAA7">Tiếp tục xem với tư cách khách</span></div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932}}">
+const IMG = {
+  minhAnh: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  nam: 'https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  baLan: 'https://images.unsplash.com/photo-1651117860079-d59586c1525f?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  giaHan: 'https://images.unsplash.com/photo-1548142813-c348350df52b?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  thuHa: 'https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  lanAnh: 'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?w=200&h=200&q=75&auto=format&fit=crop&crop=faces',
+  pho: 'https://images.unsplash.com/photo-1597345637412-9fd611e758f3?w=800&h=500&q=75&auto=format&fit=crop',
+  bepXanh: 'https://images.unsplash.com/photo-1631709497146-a239ef373cf1?w=800&h=500&q=75&auto=format&fit=crop',
+  comNha: 'https://images.unsplash.com/photo-1641440615059-42c8ed3af8c8?w=800&h=500&q=75&auto=format&fit=crop',
+  bun: 'https://images.unsplash.com/photo-1583316175701-0bc5f25a0a44?w=400&h=400&q=75&auto=format&fit=crop',
+  com: 'https://images.unsplash.com/photo-1628997323766-c846909a7049?w=400&h=400&q=75&auto=format&fit=crop',
+  chay: 'https://images.unsplash.com/photo-1594020293008-5f99f60bd4d7?w=400&h=400&q=75&auto=format&fit=crop',
+  bowl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&q=75&auto=format&fit=crop',
+  visit: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=900&h=600&q=75&auto=format&fit=crop',
+  nurseVisit: 'https://images.unsplash.com/photo-1666887360742-974c8fce8e6b?w=900&h=600&q=75&auto=format&fit=crop',
+  physio: 'https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?w=900&h=600&q=75&auto=format&fit=crop',
+  elder: 'https://images.unsplash.com/photo-1576765608866-5b51046452be?w=900&h=600&q=75&auto=format&fit=crop',
+  yoga: 'https://images.unsplash.com/photo-1774618623680-c2286dd71734?w=600&h=600&q=75&auto=format&fit=crop',
+  gym: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=600&q=75&auto=format&fit=crop',
+  walk: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600&h=600&q=75&auto=format&fit=crop',
+};
+
+const SERVICES = [
+  { id: 'doctor', icon: 1, name: 'Bác sĩ tại nhà', kicker: 'Chăm sóc tại nhà', desc: 'Bác sĩ đa khoa đến tận nhà khám, chẩn đoán và kê đơn. Phù hợp khi sốt, ho, đau bụng hoặc cần khám tổng quát mà không muốn tới bệnh viện.', shortDesc: 'Khám, chẩn đoán và kê đơn tại nhà', photo: IMG.visit, available: 3 },
+  { id: 'nurse', icon: 2, name: 'Điều dưỡng tại nhà', kicker: 'Chăm sóc tại nhà', desc: 'Điều dưỡng có chứng chỉ hành nghề thực hiện thay băng, tiêm truyền theo y lệnh, đo sinh hiệu và hướng dẫn chăm sóc sau mổ.', shortDesc: 'Thay băng, tiêm theo y lệnh, đo sinh hiệu', photo: IMG.nurseVisit, available: 5 },
+  { id: 'physio', icon: 3, name: 'Vật lý trị liệu', kicker: 'Phục hồi chức năng', desc: 'Kỹ thuật viên vật lý trị liệu xây dựng bài tập tại nhà cho đau lưng, đau vai cổ, phục hồi sau tai biến hoặc sau phẫu thuật.', shortDesc: 'Giảm đau, phục hồi vận động', photo: IMG.physio, available: 2 },
+  { id: 'elder', icon: 4, name: 'Chăm sóc người cao tuổi', kicker: 'Đồng hành dài hạn', desc: 'Người chăm sóc hỗ trợ sinh hoạt hằng ngày, nhắc thuốc, đồng hành đi khám và báo cáo tình trạng cho gia đình mỗi ngày.', shortDesc: 'Hỗ trợ sinh hoạt, nhắc thuốc, báo cáo', photo: IMG.elder, available: 4 },
+  { id: 'lab', icon: 5, name: 'Lấy mẫu xét nghiệm', kicker: 'Xét nghiệm tại nhà', desc: 'Kỹ thuật viên đến lấy mẫu máu, nước tiểu tại nhà. Kết quả trả về trong app và có bác sĩ đọc kết quả.', shortDesc: 'Lấy máu, nước tiểu, trả kết quả trong app', photo: IMG.visit, available: 6 },
+  { id: 'mental', icon: 6, name: 'Tư vấn tâm lý', kicker: 'Sức khoẻ tinh thần', desc: 'Chuyên gia tâm lý tư vấn trực tuyến hoặc tại nhà về lo âu, mất ngủ, căng thẳng công việc và các vấn đề gia đình.', shortDesc: 'Lo âu, mất ngủ, căng thẳng', photo: IMG.physio, available: 3 },
+];
+
+const FAMILY = [
+  { id: 'person-minh-anh', name: 'Minh Anh', rel: 'Bạn', detail: '36 tuổi · hen suyễn nhẹ', photo: IMG.minhAnh },
+  { id: 'person-gia-han', name: 'Gia Hân', rel: 'Vợ/chồng', detail: '33 tuổi · không bệnh nền', photo: IMG.giaHan },
+  { id: 'person-hoang-nam', name: 'Hoàng Nam', rel: 'Con trai', detail: '7 tuổi · viêm mũi dị ứng theo mùa', photo: IMG.nam },
+  { id: 'person-ba-lan', name: 'Bà Lan', rel: 'Mẹ', detail: '72 tuổi · tăng huyết áp, thoái hoá khớp gối', photo: IMG.baLan },
+];
+
+const RESTAURANTS = [
+  { id: 'com-nha-an', name: 'Cơm Nhà An', tagline: 'Cơm gạo lứt và món nhà nấu, ít dầu mỡ', rating: '4,9', eta: '25–40 phút', dist: '2,4 km', badge: 'Giàu đạm', photo: IMG.comNha, cat: 'com',
+    meals: [
+      { id: 'm1', name: 'Cơm gà áp chảo, rau củ hấp', desc: 'Ức gà áp chảo, gạo lứt, bông cải và cà rốt hấp', kcal: 520, protein: 42, photo: IMG.com },
+      { id: 'm2', name: 'Cá hồi sốt teriyaki, cơm lứt', desc: 'Cá hồi Na Uy, sốt nhạt muối, salad dưa leo', kcal: 610, protein: 38, photo: IMG.bowl },
+      { id: 'm3', name: 'Canh bí đỏ nấu tôm', desc: 'Bí đỏ, tôm tươi, nêm nhạt cho người huyết áp cao', kcal: 180, protein: 14, photo: IMG.chay },
+      { id: 'm4', name: 'Thịt kho nghệ, cơm trắng', desc: 'Thịt nạc kho nghệ, ít nước mắm, cơm trắng nóng', kcal: 480, protein: 34, photo: IMG.com },
+    ] },
+  { id: 'pho-sang', name: 'Phở Sáng', tagline: 'Phở, bún, hủ tiếu nấu thanh', rating: '4,8', eta: '20–30 phút', dist: '1,1 km', badge: 'Ít muối', photo: IMG.pho, cat: 'pho',
+    meals: [
+      { id: 'p1', name: 'Phở bò nạm gầu', desc: 'Nước dùng nấu 8 tiếng, không bột ngọt', kcal: 440, protein: 32, photo: IMG.pho },
+      { id: 'p2', name: 'Phở gà xé, hành trần', desc: 'Gà ta xé sợi, nước dùng trong, ít béo', kcal: 380, protein: 30, photo: IMG.pho },
+      { id: 'p3', name: 'Bún thang truyền thống', desc: 'Trứng, giò lụa, tôm khô, rau răm', kcal: 410, protein: 26, photo: IMG.bun },
+    ] },
+  { id: 'bep-xanh', name: 'Bếp Xanh', tagline: 'Món chay và rau củ theo mùa', rating: '4,7', eta: '25–35 phút', dist: '3,0 km', badge: 'Thuần chay', photo: IMG.bepXanh, cat: 'chay',
+    meals: [
+      { id: 'b1', name: 'Bún chay rau củ nướng', desc: 'Bún gạo, nấm, đậu hũ nướng, nước mắm chay', kcal: 390, protein: 18, photo: IMG.bepXanh },
+      { id: 'b2', name: 'Gỏi cuốn chay bơ hạt', desc: 'Bánh tráng, rau thơm, sốt đậu phộng ít đường', kcal: 260, protein: 12, photo: IMG.chay },
+      { id: 'b3', name: 'Bowl cầu vồng hạt quinoa', desc: 'Quinoa, bí đỏ, cải kale, hạt bí', kcal: 430, protein: 20, photo: IMG.bowl },
+    ] },
+];
+
+const FOOD_CATS = [
+  { id: 'all', name: 'Tất cả', photo: IMG.comNha },
+  { id: 'pho', name: 'Phở', photo: IMG.pho },
+  { id: 'bun', name: 'Bún', photo: IMG.bun },
+  { id: 'com', name: 'Cơm', photo: IMG.com },
+  { id: 'chay', name: 'Chay', photo: IMG.chay },
+  { id: 'bowl', name: 'Bowl', photo: IMG.bowl },
+];
+
+const DIETS = ['Ít muối', 'Giàu đạm', 'Ít đường', 'Thuần chay', 'Không gluten'];
+
+const STAGES = [
+  { label: 'Đã ghép chuyên gia', headline: 'BS. Thu Hà đã nhận ca của bạn', eta: 'Chuẩn bị khởi hành', cta: 'Bác sĩ khởi hành' },
+  { label: 'Đang trên đường đến', headline: 'BS. Thu Hà đang trên đường tới nhà bạn', eta: 'Còn khoảng 12 phút', cta: 'Bác sĩ đã tới cửa' },
+  { label: 'Đã đến nơi', headline: 'BS. Thu Hà đã có mặt trước cửa nhà bạn', eta: 'Đã đến', cta: 'Bắt đầu buổi khám' },
+  { label: 'Đang khám', headline: 'Buổi khám đang diễn ra', eta: 'Đang khám', cta: 'Kết thúc buổi khám' },
+];
+
+const PRAISE = ['Đúng giờ', 'Giải thích rõ ràng', 'Nhẹ nhàng, tôn trọng', 'Vệ sinh tốt', 'Theo dõi sau khám'];
+
+class Component extends DCLogic {
+  state = {
+    screen: 'welcome', stack: [], guest: false, role: 'customer',
+    gate: null,
+    svcId: 'doctor', patientId: 'person-minh-anh', urgency: 'soon',
+    careStage: -1, careDone: false,
+    takenDoses: { d1: true },
+    restId: 'com-nha-an', cart: {},
+    foodCat: 'all', diets: { 'Ít muối': true },
+    stars: 0, praise: {},
+    actTab: 'Sắp tới', tasksDone: { t2: true }, online: true, dayIdx: 3, hoursOff: { 6: true },
+    sent: 0,
+  };
+
+  nav = (s) => this.setState(p => ({ screen: s, stack: [...p.stack, p.screen] }));
+  back = () => this.setState(p => p.stack.length ? { screen: p.stack[p.stack.length - 1], stack: p.stack.slice(0, -1) } : { screen: 'home' });
+  reset = (s) => this.setState({ screen: s, stack: [] });
+
+  needAuth(action, title) {
+    if (this.state.guest) { this.setState({ gate: title }); return true; }
+    action();
+    return false;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const svc = SERVICES.find(x => x.id === s.svcId) || SERVICES[0];
+    const rest = RESTAURANTS.find(x => x.id === s.restId) || RESTAURANTS[0];
+    const patient = FAMILY.find(x => x.id === s.patientId) || FAMILY[0];
+    const stage = s.careStage >= 0 ? STAGES[Math.min(s.careStage, 3)] : null;
+
+    const cartItems = [];
+    let cartCount = 0, cartKcal = 0, cartProtein = 0;
+    RESTAURANTS.forEach(r => r.meals.forEach(m => {
+      const q = s.cart[m.id];
+      if (q > 0) {
+        cartCount += q; cartKcal += m.kcal * q; cartProtein += m.protein * q;
+        cartItems.push({ ...m, qty: q, line: m.kcal + ' kcal · ' + m.protein + 'g đạm · ' + r.name,
+          inc: () => this.setState(p => ({ cart: { ...p.cart, [m.id]: (p.cart[m.id] || 0) + 1 } })),
+          dec: () => this.setState(p => { const c = { ...p.cart }; if (c[m.id] > 1) c[m.id]--; else delete c[m.id]; return { cart: c }; }) });
+      }
+    }));
+
+    const DOSES = [
+      { id: 'd1', time: '08:00', name: 'Salbutamol dạng hít', dose: '2 nhát xịt' },
+      { id: 'd2', time: '12:30', name: 'Vitamin D3 1000 IU', dose: '1 viên · sau ăn' },
+      { id: 'd3', time: '18:00', name: 'Cetirizine cho Hoàng Nam', dose: '2,5 ml siro' },
+      { id: 'd5', time: '19:00', name: 'Amlodipin 5mg cho bà Lan', dose: '1 viên · sau ăn' },
+      { id: 'd4', time: '20:00', name: 'Salbutamol dạng hít', dose: '2 nhát xịt' },
+    ];
+    const doses = DOSES.map(d => ({ ...d, taken: !!s.takenDoses[d.id], pending: !s.takenDoses[d.id],
+      take: () => this.needAuth(() => this.setState(p => ({ takenDoses: { ...p.takenDoses, [d.id]: true } })), 'Đăng nhập để theo dõi thuốc') }));
+    const takenCount = DOSES.filter(d => s.takenDoses[d.id]).length;
+    const nextDose = DOSES.find(d => !s.takenDoses[d.id]);
+
+    const filtered = RESTAURANTS.filter(r => s.foodCat === 'all' || r.cat === s.foodCat);
+    const activeDiets = Object.keys(s.diets).filter(k => s.diets[k]);
+
+    const TASKS = [
+      { id: 't1', title: 'Gọi lại cho bà Lan về kết quả huyết áp', meta: 'Hôm nay · trước 17:00', priority: 'Gấp', tintBg: '#2A1412', tintFg: '#FF6B5A' },
+      { id: 't2', title: 'Hoàn tất ghi chú ca khám Minh Anh', meta: 'Hôm nay · 15:20', priority: 'Vừa', tintBg: '#2A2412', tintFg: '#FFB020' },
+      { id: 't3', title: 'Chuẩn bị dụng cụ thay băng cho ca 16:00', meta: 'Hôm nay · 16:00', priority: 'Vừa', tintBg: '#2A2412', tintFg: '#FFB020' },
+      { id: 't4', title: 'Cập nhật chứng chỉ hành nghề', meta: 'Tuần này', priority: 'Thường', tintBg: '#16191A', tintFg: '#8B928F' },
+      { id: 't5', title: 'Xem lại đơn thuốc bé Hoàng Nam', meta: 'Mai · 09:00', priority: 'Thường', tintBg: '#16191A', tintFg: '#8B928F' },
+    ];
+    const tasks = TASKS.map(t => ({ ...t, done: !!s.tasksDone[t.id], open: !s.tasksDone[t.id],
+      toggle: () => this.setState(p => ({ tasksDone: { ...p.tasksDone, [t.id]: !p.tasksDone[t.id] } })) }));
+    const doneCount = TASKS.filter(t => s.tasksDone[t.id]).length;
+
+    const tabDefs = [
+      { key: 'home', label: 'Trang chủ', tHome: true },
+      { key: 'services', label: 'Dịch vụ', tSvc: true },
+      { key: 'activity', label: 'Hoạt động', tAct: true },
+      { key: 'account', label: 'Tài khoản', tAcc: true },
+    ];
+
+    const dayNames = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+
+    return {
+      is_welcome: s.screen === 'welcome',
+      is_home: s.screen === 'home', is_services: s.screen === 'services', is_service: s.screen === 'service',
+      is_searching: s.screen === 'searching', is_tracking: s.screen === 'tracking', is_summary: s.screen === 'summary',
+      is_rating: s.screen === 'rating', is_food: s.screen === 'food', is_restaurant: s.screen === 'restaurant',
+      is_cart: s.screen === 'cart', is_placed: s.screen === 'placed', is_meds: s.screen === 'meds',
+      is_activity: s.screen === 'activity', is_account: s.screen === 'account', is_family: s.screen === 'family',
+      is_chat: s.screen === 'chat', is_convo: s.screen === 'convo', is_fitness: s.screen === 'fitness',
+      is_pHome: s.screen === 'pHome', is_pSchedule: s.screen === 'pSchedule', is_pTasks: s.screen === 'pTasks',
+      is_pNotes: s.screen === 'pNotes', is_pHours: s.screen === 'pHours',
+
+      showTabs: ['home', 'services', 'activity', 'account'].indexOf(s.screen) >= 0,
+      tabs: tabDefs.map(t => ({ ...t, color: s.screen === t.key ? '#19C08C' : '#6E7673', go: () => this.reset(t.key) })),
+
+      guest: s.guest, signedIn: !s.guest,
+      greeting: s.guest ? 'Chào bạn' : 'Chào Minh Anh',
+      address: '128/4 Nguyễn Đình Chiểu, Q.3',
+      todayLine: s.guest ? 'Xem dịch vụ và quán ăn quanh Quận 3' : 'Chủ nhật, 23 tháng 8 · ' + (DOSES.length - takenCount) + ' việc cần làm hôm nay',
+      familyLine: s.guest ? 'Thêm người thân' : FAMILY.length + ' thành viên',
+      fitLine: s.guest ? 'Xem bài tập' : '4 buổi tuần này',
+
+      gateOpen: !!s.gate, gateTitle: s.gate || '',
+      openGate: () => this.setState({ gate: 'Đăng nhập để dùng đầy đủ Haven' }),
+      closeGate: () => this.setState({ gate: null }),
+      signInFromGate: () => this.setState({ guest: false, gate: null }),
+
+      enterCustomer: () => this.setState({ guest: false, role: 'customer', screen: 'home', stack: [] }),
+      enterGuest: () => this.setState({ guest: true, role: 'customer', screen: 'home', stack: [] }),
+      enterProvider: () => this.setState({ guest: false, role: 'provider', screen: 'pHome', stack: [] }),
+
+      back: this.back,
+      go_home: () => this.reset('home'), go_services: () => this.nav('services'), go_food: () => this.nav('food'),
+      go_cart: () => this.nav('cart'), go_meds: () => this.nav('meds'), go_activity: () => this.reset('activity'),
+      go_account: () => this.reset('account'), go_family: () => this.nav('family'), go_chat: () => this.nav('chat'),
+      go_convo: () => this.nav('convo'), go_fitness: () => this.nav('fitness'), go_tracking: () => this.nav('tracking'),
+      go_rating: () => this.nav('rating'), go_pSchedule: () => this.nav('pSchedule'), go_pTasks: () => this.nav('pTasks'),
+      go_pNotes: () => this.nav('pNotes'), go_pHours: () => this.nav('pHours'),
+
+      pickDoctor: () => this.setState({ svcId: 'doctor', screen: 'service', stack: [...s.stack, s.screen] }),
+      pickNurse: () => this.setState({ svcId: 'nurse', screen: 'service', stack: [...s.stack, s.screen] }),
+      pickPhysio: () => this.setState({ svcId: 'physio', screen: 'service', stack: [...s.stack, s.screen] }),
+      pickElder: () => this.setState({ svcId: 'elder', screen: 'service', stack: [...s.stack, s.screen] }),
+
+      svc, rest, patientName: patient.name,
+      careServices: SERVICES.map(x => ({ name: x.name, desc: x.shortDesc, ['i' + x.icon]: true,
+        open: () => this.setState(p => ({ svcId: x.id, screen: 'service', stack: [...p.stack, p.screen] })) })),
+
+      family: FAMILY.map(m => ({ ...m, selected: m.id === s.patientId, unselected: m.id !== s.patientId,
+        pick: () => this.setState({ patientId: m.id }),
+        book: () => this.setState(p => ({ patientId: m.id, svcId: 'doctor', screen: 'service', stack: [...p.stack, p.screen] })) })),
+
+      urgencies: [
+        { key: 'now', label: 'Càng sớm càng tốt', note: 'Chuyên gia gần nhất, ~20 phút' },
+        { key: 'soon', label: 'Hôm nay', note: 'Chọn khung giờ bạn rảnh' },
+      ].map(u => ({ ...u, selected: s.urgency === u.key, unselected: s.urgency !== u.key, pick: () => this.setState({ urgency: u.key }) })),
+
+      startCare: () => this.needAuth(() => this.setState(p => ({ screen: 'searching', stack: [...p.stack, p.screen], careStage: -1, careDone: false })), 'Đăng nhập để đặt lịch chăm sóc'),
+      cancelCare: () => this.setState({ screen: 'home', stack: [], careStage: -1 }),
+      matchPro: () => this.setState({ screen: 'tracking', careStage: 0 }),
+      signOut: () => this.setState({ screen: 'welcome', stack: [], guest: false, careStage: -1, cart: {}, stars: 0, praise: {}, sent: 0 }),
+      searchHeadline: 'Đang tìm ' + svc.name.toLowerCase() + ' gần bạn nhất',
+      careLive: s.careStage >= 0 && !s.careDone,
+      careStageLabel: stage ? stage.label : '',
+      careHeadline: stage ? stage.headline : '',
+      careEta: stage ? stage.eta : '',
+      careCta: stage ? stage.cta : '',
+      careProName: 'BS. Nguyễn Thu Hà',
+      careSteps: STAGES.map((st, i) => ({ label: ['Đã ghép', 'Đang đến', 'Đã đến', 'Đang khám'][i], done: i <= s.careStage, todo: i > s.careStage })),
+      advanceCare: () => this.setState(p => p.careStage >= 3 ? { screen: 'summary', careStage: 3, careDone: true, stack: [] } : { careStage: p.careStage + 1 }),
+
+      stars: [1, 2, 3, 4, 5].map(n => ({ on: n <= s.stars, off: n > s.stars, pick: () => this.setState({ stars: n }) })),
+      praise: PRAISE.map(p => ({ label: p, on: !!s.praise[p], off: !s.praise[p], toggle: () => this.setState(q => ({ praise: { ...q.praise, [p]: !q.praise[p] } })) })),
+      submitRating: () => this.setState({ screen: 'activity', stack: [], careStage: -1 }),
+
+      restaurants: RESTAURANTS.map(r => ({ ...r, open: () => this.setState(p => ({ restId: r.id, screen: 'restaurant', stack: [...p.stack, p.screen] })) })),
+      foodList: filtered.map(r => ({ ...r, open: () => this.setState(p => ({ restId: r.id, screen: 'restaurant', stack: [...p.stack, p.screen] })) })),
+      foodListTitle: s.foodCat === 'all' ? (activeDiets.length ? activeDiets.join(' · ') + ' gần bạn' : 'Quán ăn gần bạn') : FOOD_CATS.find(c => c.id === s.foodCat).name + ' gần bạn',
+      foodCats: FOOD_CATS.map(c => ({ ...c, on: s.foodCat === c.id, off: s.foodCat !== c.id, pick: () => this.setState({ foodCat: c.id }) })),
+      diets: DIETS.map(d => ({ label: d, on: !!s.diets[d], off: !s.diets[d], toggle: () => this.setState(p => ({ diets: { ...p.diets, [d]: !p.diets[d] } })) })),
+      meals: rest.meals.map(m => ({ ...m, add: () => this.needAuth(() => this.setState(p => ({ cart: { ...p.cart, [m.id]: (p.cart[m.id] || 0) + 1 } })), 'Đăng nhập để đặt món') })),
+      cart: cartItems, cartCount, cartKcal, cartProtein, hasCart: cartCount > 0, emptyCart: cartCount === 0,
+      placeOrder: () => this.setState({ screen: 'placed', stack: [], cart: {} }),
+      placedLine: cartKcal + ' kcal đã được ghi vào nhật ký dinh dưỡng. Quán đang chuẩn bị, giao trong 25–40 phút.',
+
+      doses, dosesLabel: takenCount + '/' + DOSES.length,
+      adherenceDash: Math.round(201 * takenCount / DOSES.length) + ' 201',
+      nextDoseLine: nextDose ? 'Lần tới ' + nextDose.time + ' · ' + nextDose.name : 'Hôm nay bạn đã uống đủ liều.',
+
+      actTabs: ['Sắp tới', 'Đã xong', 'Đơn món'].map(t => ({ label: t, on: s.actTab === t, off: s.actTab !== t, pick: () => this.setState({ actTab: t }) })),
+      activityRows: (s.actTab === 'Sắp tới' ? [
+        { kCare: true, title: 'Khám tại nhà · BS. Nguyễn Thu Hà', meta: 'Mai 09:30 · Minh Anh', status: 'Đã xác nhận' },
+        { kMed: true, title: 'Salbutamol dạng hít', meta: 'Hôm nay 20:00 · 2 nhát xịt', status: 'Chờ uống' },
+        { kFit: true, title: 'Dưỡng sinh buổi sáng', meta: 'Mai 06:30 · công viên Tao Đàn', status: 'Đã lên lịch' },
+      ] : s.actTab === 'Đã xong' ? [
+        { kCare: true, title: 'Theo dõi huyết áp bà Lan · ĐD. Lan Anh', meta: '21/8 · 45 phút', status: 'Hoàn thành' },
+        { kFit: true, title: 'Đi bộ nhanh 30 phút', meta: '22/8 · 3,2 km · 240 kcal', status: 'Hoàn thành' },
+        { kMed: true, title: 'Vitamin D3 1000 IU', meta: '22/8 12:30', status: 'Đã uống' },
+      ] : [
+        { kFood: true, title: 'Cơm Nhà An · 2 món', meta: '22/8 · 700 kcal · 56g đạm', status: 'Đã giao' },
+        { kFood: true, title: 'Bếp Xanh · 1 món', meta: '21/8 · 390 kcal · 18g đạm', status: 'Đã giao' },
+      ]),
+
+      accountRows: [
+        { label: 'Hồ sơ sức khoẻ', value: 'Minh Anh', tint: '#19C08C', open: () => this.nav('family') },
+        { label: 'Thành viên gia đình', value: FAMILY.length + ' người', tint: '#FFB020', open: () => this.nav('family') },
+        { label: 'Địa chỉ đã lưu', value: '2 địa chỉ', tint: '#4A9EFF', open: () => {} },
+        { label: 'Đơn thuốc & kết quả', value: '6 tài liệu', tint: '#A78BFA', open: () => this.nav('meds') },
+        { label: 'Thanh toán', value: 'Momo · VNPay', tint: '#22D3EE', open: () => {} },
+        { label: 'Cài đặt & quyền riêng tư', value: '', tint: '#8B928F', open: () => {} },
+      ],
+
+      threads: [
+        { name: 'BS. Nguyễn Thu Hà', last: 'Chị nhớ dùng thuốc hít đúng giờ nhé, mai tôi nhắc lại.', time: '10:24', photo: IMG.thuHa, unread: true, count: 2, open: () => this.nav('convo') },
+        { name: 'ĐD. Trần Lan Anh', last: 'Vết thương của bà khô rồi, mai em ghé thay băng.', time: 'Hôm qua', photo: IMG.lanAnh, unread: false, open: () => this.nav('convo') },
+        { name: 'Hỗ trợ Haven', last: 'Cảm ơn bạn đã đánh giá buổi khám.', time: '21/8', photo: IMG.visit, unread: false, open: () => this.nav('convo') },
+      ],
+      messages: [
+        { theirs: true, text: 'Chào chị Minh Anh, tôi là BS. Thu Hà. Chị mô tả giúp tôi cơn ho hiện tại nhé?' },
+        { mine: true, text: 'Dạ ho khan nhiều về đêm, hơi khó thở khi leo cầu thang bác ạ.' },
+        { theirs: true, text: 'Chị dùng thuốc hít mấy lần một ngày rồi ạ?' },
+        { mine: true, text: 'Sáng và tối, mỗi lần 2 nhát xịt.' },
+        ...(s.sent ? [{ mine: true, text: 'Bác cho em hỏi có cần chụp X-quang không ạ?' }] : []),
+        ...(s.sent ? [{ theirs: true, text: 'Chưa cần chị nhé. Tôi sẽ đánh giá lại khi tới khám chiều nay.' }] : []),
+      ],
+      sendMsg: () => this.setState({ sent: 1 }),
+      composerText: s.sent ? 'Đã gửi · nhập tin nhắn mới…' : 'Nhập tin nhắn…',
+
+      weekBars: [
+        { day: 'T2', h: '58%', color: '#22D3EE' }, { day: 'T3', h: '34%', color: '#0EA5C4' },
+        { day: 'T4', h: '76%', color: '#22D3EE' }, { day: 'T5', h: '18%', color: '#123840' },
+        { day: 'T6', h: '92%', color: '#22D3EE' }, { day: 'T7', h: '46%', color: '#0EA5C4' },
+        { day: 'CN', h: '12%', color: '#123840' },
+      ],
+      routines: [
+        { name: 'Dưỡng sinh buổi sáng', meta: '8 động tác · 22 phút · nhẹ', photo: IMG.yoga, start: () => {} },
+        { name: 'Đi bộ nhanh quanh khu', meta: '30 phút · 3,2 km · vừa', photo: IMG.walk, start: () => {} },
+        { name: 'Tập lưng cho dân văn phòng', meta: '6 động tác · 15 phút · nhẹ', photo: IMG.gym, start: () => {} },
+      ],
+
+      online: s.online, offline: !s.online, toggleOnline: () => this.setState(p => ({ online: !p.online })),
+      pVisitsToday: 4, openTasks: TASKS.length - doneCount,
+      jobs: [
+        { urgency: 'Càng sớm càng tốt', dist: '2,1 km', time: '6 phút trước', service: 'Bác sĩ tại nhà · Người lớn, khoảng 40 tuổi', note: 'Quận 10, gần Sư Vạn Hạnh · phù hợp chuyên khoa của bạn và bạn là bác sĩ gần nhất đang rảnh.', accept: () => this.nav('pSchedule'), decline: () => {} },
+        { urgency: 'Chiều nay', dist: '4,8 km', time: '25 phút trước', service: 'Chăm sóc người cao tuổi · Người cao tuổi, khoảng 70', note: 'Phú Nhuận, gần Phan Xích Long · đi lại khó khăn, cần rà soát thuốc.', accept: () => this.nav('pSchedule'), decline: () => {} },
+      ],
+      days: dayNames.map((d, i) => ({ dow: d, num: 21 + i, on: i === s.dayIdx, off: i !== s.dayIdx, pick: () => this.setState({ dayIdx: i }) })),
+      slots: [
+        { time: '09:30', booked: true, patient: 'Trần Minh Anh', service: 'Khám tại nhà · hen suyễn', addr: '128/4 Nguyễn Đình Chiểu, Q.3', photo: IMG.minhAnh, open: () => {} },
+        { time: '11:00', free: true },
+        { time: '14:00', booked: true, patient: 'Bà Lê Thị Lan', service: 'Theo dõi huyết áp', addr: '45 Phan Xích Long, Phú Nhuận', photo: IMG.baLan, open: () => {} },
+        { time: '16:00', booked: true, patient: 'Nguyễn Hoàng Nam', service: 'Khám viêm mũi dị ứng', addr: '128/4 Nguyễn Đình Chiểu, Q.3', photo: IMG.nam, open: () => {} },
+        { time: '17:30', free: true },
+      ],
+      tasks, taskProgress: doneCount + '/' + TASKS.length, taskPct: Math.round(100 * doneCount / TASKS.length) + '%',
+      notes: [
+        { tag: 'Ca khám', when: 'Hôm nay 15:20', title: 'Trần Minh Anh · viêm phế quản nhẹ', body: 'Phổi thông khí tốt, không rales. Kê Salbutamol dạng hít 2 nhát × 2 lần/ngày, Acetylcystein 200mg × 3. Hẹn tái khám nếu ho tăng sau 3 ngày.' },
+        { tag: 'Theo dõi', when: 'Hôm qua', title: 'Bà Lê Thị Lan · tăng huyết áp', body: 'Trung bình 7 ngày 138/85. Đã hướng dẫn giảm muối và đo hai lần mỗi ngày. Kèm thoái hoá khớp gối nên hạn chế đứng lâu.' },
+        { tag: 'Nhi', when: '21/8', title: 'Nguyễn Hoàng Nam · viêm mũi dị ứng', body: 'Cetirizine siro 2,5ml buổi tối, theo dõi 5 ngày. Mẹ ghi nhận ngủ ngon hơn, hết chảy nước mũi buổi sáng. Lưu ý dị ứng đậu phộng.' },
+      ],
+      hours: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'].map((d, i) => ({
+        day: d, range: i < 5 ? '08:00 – 18:00' : '08:00 – 12:00', cap: i < 5 ? 'Tối đa 5 ca' : 'Tối đa 3 ca',
+        on: s.hoursOff[i] !== true && i !== 6, off: s.hoursOff[i] === true || i === 6,
+        toggle: () => this.setState(p => ({ hoursOff: { ...p.hoursOff, [i]: !p.hoursOff[i] } })),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>
